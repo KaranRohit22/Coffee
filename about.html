@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us</title>
+<title>Fresh Coffee - About Us</title>
 
 <style>
 
@@ -16,19 +16,73 @@
 
 body{
   min-height:100vh;
-  background:linear-gradient(135deg,#6a11cb,#2575fc);
   overflow-x:hidden;
   position:relative;
-  padding:40px 15px;
+  padding:30px 15px;
+
+  /* UNIQUE COFFEE THEME */
+
+  background:
+  linear-gradient(rgba(20,10,5,0.75),rgba(20,10,5,0.75)),
+  url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
 }
 
-/* ================= BACKGROUND ================= */
+/* ================= NAVBAR ================= */
+
+.navbar{
+  width:100%;
+  padding:20px 8%;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(12px);
+
+  border-radius:20px;
+
+  position:relative;
+  z-index:1000;
+}
+
+.logo{
+  font-size:30px;
+  font-weight:bold;
+  color:#ffe0c2;
+}
+
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  font-size:17px;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#ffb26b;
+}
+
+/* ================= BACKGROUND GLOW ================= */
 
 .circle{
   position:fixed;
   border-radius:50%;
-  filter:blur(60px);
-  opacity:0.5;
+  filter:blur(80px);
+  opacity:0.35;
   z-index:0;
   animation:float 5s infinite alternate ease-in-out;
 }
@@ -36,17 +90,17 @@ body{
 .circle1{
   width:250px;
   height:250px;
-  background:#ff4ecd;
+  background:#ff8c42;
   top:10%;
-  left:10%;
+  left:5%;
 }
 
 .circle2{
   width:300px;
   height:300px;
-  background:#00ffd5;
+  background:#c084fc;
   bottom:10%;
-  right:10%;
+  right:5%;
 }
 
 @keyframes float{
@@ -62,18 +116,21 @@ body{
 
 .about-section{
   width:100%;
-  max-width:1100px;
-  margin:auto;
+  max-width:1150px;
+
+  margin:40px auto;
+
   padding:40px;
-  border-radius:25px;
 
-  background:rgba(255,255,255,0.12);
+  border-radius:28px;
 
-  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.08);
 
-  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(14px);
 
-  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+  border:1px solid rgba(255,255,255,0.1);
+
+  box-shadow:0 10px 40px rgba(0,0,0,0.35);
 
   position:relative;
   z-index:2;
@@ -96,10 +153,15 @@ body{
 
 .about-image img{
   width:100%;
+  height:100%;
   display:block;
-  border-radius:20px;
+
+  border-radius:22px;
+
   object-fit:cover;
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.4);
+
   transition:0.4s;
 }
 
@@ -114,35 +176,39 @@ body{
 }
 
 .about-content h2{
-  font-size:45px;
+  font-size:48px;
   margin-bottom:20px;
+  color:#ffe0c2;
 }
 
 .about-content p{
   font-size:17px;
-  line-height:1.8;
+  line-height:1.9;
   margin-bottom:20px;
   color:rgba(255,255,255,0.85);
 }
 
 .about-btn{
-  padding:14px 30px;
-  border:none;
-  border-radius:12px;
+  padding:15px 32px;
 
-  background:linear-gradient(45deg,#ff4ecd,#00ffd5);
+  border:none;
+  border-radius:14px;
+
+  background:linear-gradient(135deg,#ff8c42,#ff4d6d);
 
   color:white;
+
   font-size:16px;
   font-weight:bold;
 
   cursor:pointer;
+
   transition:0.3s;
 }
 
 .about-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  box-shadow:0 8px 25px rgba(0,0,0,0.35);
 }
 
 /* ================= ANIMATION ================= */
@@ -185,16 +251,37 @@ body{
 @media(max-width:768px){
 
   body{
-    padding:20px 12px;
+    padding:15px 10px;
+    background-attachment:scroll;
+  }
+
+  .navbar{
+    padding:15px;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .logo{
+    width:100%;
+    font-size:26px;
+  }
+
+  .nav-links{
+    justify-content:center;
+    gap:15px;
+  }
+
+  .nav-links a{
+    font-size:15px;
   }
 
   .about-section{
+    margin-top:25px;
     padding:25px 18px;
-    border-radius:20px;
+    border-radius:22px;
   }
 
   .about-container{
-    padding: 10px;
     gap:25px;
   }
 
@@ -214,11 +301,48 @@ body{
   }
 
   .about-image img{
-    border-radius:15px;
-
+    border-radius:18px;
   }
 
-  
+  /* Glow Smaller */
+
+  .circle1{
+    width:150px;
+    height:150px;
+    left:-50px;
+  }
+
+  .circle2{
+    width:180px;
+    height:180px;
+    right:-50px;
+  }
+
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:480px){
+
+  .logo{
+    font-size:22px;
+  }
+
+  .nav-links{
+    gap:10px;
+  }
+
+  .nav-links a{
+    font-size:14px;
+  }
+
+  .about-content h2{
+    font-size:26px;
+  }
+
+  .about-content p{
+    font-size:14px;
+  }
 
 }
 
@@ -227,12 +351,40 @@ body{
 
 <body>
 
-<!-- Background -->
+<!-- NAVBAR -->
+
+<header>
+
+  <nav class="navbar">
+
+    <div class="logo">
+      ☕ Fresh Coffee
+    </div>
+
+    <ul class="nav-links">
+
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="menu.html">Menu</a></li>
+
+      <li><a href="about.html">About</a></li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+      <li><a href="review.html">Review</a></li>
+
+    </ul>
+
+  </nav>
+
+</header>
+
+<!-- GLOW -->
 
 <div class="circle circle1"></div>
 <div class="circle circle2"></div>
 
-<!-- About Section -->
+<!-- ABOUT SECTION -->
 
 <section class="about-section hidden">
 

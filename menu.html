@@ -1,389 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coffee Menu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Coffee Menu</title>
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial,sans-serif;
-    }
+/* ================= GLOBAL ================= */
 
-    body{
-      background: linear-gradient(135deg,#6a11cb,#2575fc);
-      min-height:100vh;
-      padding:40px 20px;
-      overflow-x:hidden;
-      position:relative;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-    /* ================= BACKGROUND GLOW ================= */
+html,body{
+  width:100%;
+  overflow-x:hidden;
+}
 
-    .circle{
-      position:absolute;
-      border-radius:50%;
-      filter:blur(60px);
-      opacity:0.5;
-      animation:float 5s infinite alternate ease-in-out;
-      z-index:0;
-    }
+/* ================= BODY ================= */
 
-    .circle1{
-      width:250px;
-      height:250px;
-      background:#ff4ecd;
-      top:5%;
-      left:5%;
-    }
+body{
 
-    .circle2{
-      width:300px;
-      height:300px;
-      background:#00ffd5;
-      bottom:5%;
-      right:5%;
-    }
+  background:
+  linear-gradient(rgba(15,10,5,0.78), rgba(15,10,5,0.78)),
+  url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop');
 
-    @keyframes float{
-      from{
-        transform:translateY(0px);
-      }
-      to{
-        transform:translateY(30px);
-      }
-    }
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
 
-    /* ================= MENU SECTION ================= */
+  min-height:100vh;
+  padding:40px 20px;
+  position:relative;
+}
 
-    .menu-section{
-      position:relative;
-      z-index:2;
-      width:100%;
-      max-width:1200px;
-      margin:auto;
-    }
+/* ================= IMAGE ================= */
 
-    .menu-title{
-      text-align:center;
-      font-size:50px;
-      color:white;
-      margin-bottom:50px;
-    }
+img{
+  width:100%;
+  display:block;
+}
 
-    .menu-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:30px;
-    }
+/* ================= NAVBAR ================= */
 
-    /* ================= MENU CARD ================= */
+.navbar{
 
-    .menu-card{
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.2);
-      border-radius:25px;
-      overflow:hidden;
-      color:white;
-      transition:0.4s;
-      box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  width:100%;
 
-      opacity:0;
-      transform:translateY(40px);
-    }
+  padding:18px 8%;
 
-    .menu-card.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-    .menu-card:hover{
-      transform:translateY(-10px);
-    }
+  background:rgba(40,20,10,0.45);
 
-    .menu-card img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-      transition:0.4s;
-      display:block;
-    }
+  backdrop-filter:blur(12px);
 
-    .menu-card:hover img{
-      transform:scale(1.05);
-    }
+  border:1px solid rgba(255,255,255,0.08);
 
-    .menu-content{
-      padding:20px;
-      text-align:center;
-    }
+  border-radius:18px;
 
-    .menu-content h2{
-      margin-bottom:10px;
-      font-size:28px;
-    }
+  position:sticky;
+  top:10px;
 
-    .price{
-      display:block;
-      color:#00ffd5;
-      font-size:20px;
-      margin-bottom:15px;
-    }
+  z-index:1000;
+}
 
-    .menu-btn{
-      padding:12px 25px;
-      border:none;
-      border-radius:12px;
-      background:linear-gradient(45deg,#ff4ecd,#00ffd5);
-      color:white;
-      font-size:15px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-      width:100%;
-    }
+.logo{
+  font-size:32px;
+  font-weight:bold;
+  color:#ffe0b2;
+}
 
-    .menu-btn:hover{
-      transform:scale(1.03);
-      box-shadow:0 8px 20px rgba(0,0,0,0.3);
-    }
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:30px;
+}
 
-    /* ================= MOBILE RESPONSIVE ================= */
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  font-size:18px;
+  transition:0.3s;
+}
 
-    /* ================= MOBILE RESPONSIVE ================= */
+.nav-links a:hover{
+  color:#ffcc80;
+}
+
+/* ================= BACKGROUND GLOW ================= */
+
+.circle{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:0.45;
+  animation:float 6s infinite alternate ease-in-out;
+  z-index:0;
+}
+
+.circle1{
+  width:250px;
+  height:250px;
+  background:#ff9800;
+  top:5%;
+  left:5%;
+}
+
+.circle2{
+  width:280px;
+  height:280px;
+  background:#ff5722;
+  bottom:5%;
+  right:5%;
+}
+
+@keyframes float{
+
+  from{
+    transform:translateY(0px);
+  }
+
+  to{
+    transform:translateY(30px);
+  }
+
+}
+
+/* ================= MENU SECTION ================= */
+
+.menu-section{
+  position:relative;
+  z-index:2;
+
+  width:100%;
+  max-width:1200px;
+
+  margin:auto;
+}
+
+.menu-title{
+
+  text-align:center;
+
+  font-size:55px;
+
+  color:#fff3e0;
+
+  margin-top:60px;
+  margin-bottom:45px;
+
+  line-height:1.3;
+
+  text-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* ================= MENU GRID ================= */
+
+.menu-container{
+
+  width:100%;
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+  gap:30px;
+}
+
+/* ================= MENU CARD ================= */
+
+.menu-card{
+
+  background:rgba(40,20,10,0.42);
+
+  backdrop-filter:blur(14px);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:25px;
+
+  overflow:hidden;
+
+  color:white;
+
+  transition:0.4s;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.menu-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.menu-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 14px 30px rgba(0,0,0,0.45);
+}
+
+/* ================= IMAGE ================= */
+
+.menu-card img{
+
+  width:100%;
+  height:250px;
+
+  object-fit:cover;
+
+  transition:0.4s;
+}
+
+.menu-card:hover img{
+  transform:scale(1.05);
+}
+
+/* ================= CONTENT ================= */
+
+.menu-content{
+  padding:22px;
+  text-align:center;
+}
+
+.menu-content h2{
+
+  margin-bottom:10px;
+
+  font-size:28px;
+
+  color:#ffe0b2;
+}
+
+.price{
+
+  display:block;
+
+  color:#ffcc80;
+
+  font-size:20px;
+
+  margin-bottom:15px;
+}
+
+/* ================= BUTTON ================= */
+
+.menu-btn{
+
+  width:100%;
+
+  padding:13px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:linear-gradient(135deg,#8b4513,#d2691e);
+
+  color:white;
+
+  font-size:15px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.menu-btn:hover{
+
+  transform:scale(1.03);
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= TABLET VIEW ================= */
 
 @media screen and (max-width:768px){
 
   body{
-    padding: 20px 12px;
+    padding:20px 15px;
+    background-attachment:scroll;
   }
 
-  .menu-section{
-    width: 100%;
+  .navbar{
+    flex-direction:column;
+    gap:15px;
+    padding:18px;
+  }
+
+  .nav-links{
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
   }
 
   .menu-title{
-    font-size: 32px;
-    line-height: 1.3;
-    margin-bottom: 25px;
+    font-size:36px;
+    margin-top:40px;
+    margin-bottom:30px;
   }
 
   .menu-container{
-    grid-template-columns: 1fr;
-    gap: 22px;
+    grid-template-columns:1fr;
+    gap:20px;
   }
 
   .menu-card{
-    width: 100%;
-    border-radius: 20px;
+    border-radius:20px;
   }
 
   .menu-card img{
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height:220px;
   }
 
   .menu-content{
-    padding: 18px 15px;
+    padding:18px;
   }
 
   .menu-content h2{
-    font-size: 22px;
-    margin-bottom: 8px;
+    font-size:24px;
   }
 
   .price{
-    font-size: 18px;
-    margin-bottom: 14px;
+    font-size:18px;
   }
 
   .menu-btn{
-    width: 100%;
-    padding: 12px;
-    font-size: 15px;
+    font-size:15px;
+    padding:12px;
   }
 
-  /* Glow circles smaller */
-
   .circle1{
-    width: 150px;
-    height: 150px;
-    top: 0;
-    left: -40px;
+    width:140px;
+    height:140px;
+    left:-20px;
   }
 
   .circle2{
-    width: 180px;
-    height: 180px;
-    right: -50px;
-    bottom: 0;
+    width:160px;
+    height:160px;
+    right:-20px;
   }
 
 }
 
-
-/* ================= SMALL MOBILE ================= */
+/* ================= MOBILE VIEW ================= */
 
 @media screen and (max-width:480px){
 
   body{
-    padding: 15px 10px;
-     min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    padding:15px 10px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .nav-links{
+    gap:10px;
+  }
+
+  .nav-links a{
+    font-size:15px;
   }
 
   .menu-title{
-    font-size: 26px;
+    font-size:28px;
+    margin-bottom:25px;
+  }
+
+  .menu-card{
+    border-radius:18px;
   }
 
   .menu-card img{
-    height: 190px;
+    height:190px;
   }
 
   .menu-content{
-    padding: 15px;
+    padding:15px;
   }
 
   .menu-content h2{
-    font-size: 20px;
+    font-size:21px;
   }
 
   .price{
-    font-size: 16px;
+    font-size:16px;
   }
 
   .menu-btn{
-    font-size: 14px;
-    padding: 11px;
+    font-size:14px;
+    padding:11px;
   }
 
 }
 
-    /* ================= EXTRA SMALL DEVICES ================= */
-
-    @media(max-width:480px){
-
-      .menu-title{
-        font-size:28px;
-      }
-
-      .menu-card img{
-        height:200px;
-      }
-
-      .menu-content h2{
-        font-size:22px;
-      }
-
-      .price{
-        font-size:16px;
-      }
-
-    }
-
-  </style>
+</style>
 </head>
+
 <body>
 
-  <!-- Background Glow -->
+<!-- ================= NAVBAR ================= -->
 
-  <div class="circle circle1"></div>
-  <div class="circle circle2"></div>
+<header>
 
-  <!-- Menu Section -->
+<nav class="navbar">
 
-  <section class="menu-section">
+<div class="logo">
+☕ Fresh Coffee
+</div>
 
-    <h1 class="menu-title">Our Coffee Menu ☕</h1>
+<ul class="nav-links">
 
-    <div class="menu-container">
+<li><a href="index.html">Home</a></li>
 
-      <!-- Card 1 -->
+<li><a href="menu.html">Menu</a></li>
 
-      <div class="menu-card">
+<li><a href="about.html">About</a></li>
 
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" alt="Cappuccino">
+<li><a href="contact.html">Contact</a></li>
 
-        <div class="menu-content">
-          <h2>Cappuccino</h2>
-          <span class="price">$5.00</span>
-          <button class="menu-btn">Order Now</button>
-        </div>
+<li><a href="review.html">Review</a></li>
 
-      </div>
+</ul>
 
-      <!-- Card 2 -->
+</nav>
 
-      <div class="menu-card">
+</header>
 
-        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Espresso">
+<!-- ================= BACKGROUND GLOW ================= -->
 
-        <div class="menu-content">
-          <h2>Espresso</h2>
-          <span class="price">$4.00</span>
-          <button class="menu-btn">Order Now</button>
-        </div>
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
 
-      </div>
+<!-- ================= MENU SECTION ================= -->
 
-      <!-- Card 3 -->
+<section class="menu-section">
 
-      <div class="menu-card">
+<h1 class="menu-title">
+Our Coffee Menu ☕
+</h1>
 
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop" alt="Latte">
+<div class="menu-container">
 
-        <div class="menu-content">
-          <h2>Latte</h2>
-          <span class="price">$6.00</span>
-          <button class="menu-btn">Order Now</button>
-        </div>
+<!-- CARD 1 -->
 
-      </div>
+<div class="menu-card">
 
-      <!-- Card 4 -->
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" alt="Cappuccino">
 
-      <div class="menu-card">
+<div class="menu-content">
 
-        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1200&auto=format&fit=crop" alt="Cold Coffee">
+<h2>Cappuccino</h2>
 
-        <div class="menu-content">
-          <h2>Cold Coffee</h2>
-          <span class="price">$7.00</span>
-          <button class="menu-btn">Order Now</button>
-        </div>
+<span class="price">$5.00</span>
 
-      </div>
+<button class="menu-btn">
+Order Now
+</button>
 
-    </div>
+</div>
 
-  </section>
+</div>
 
-  <script>
+<!-- CARD 2 -->
 
-    // Card Animation
+<div class="menu-card">
 
-    const cards = document.querySelectorAll('.menu-card');
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Espresso">
 
-    window.addEventListener('load', () => {
+<div class="menu-content">
 
-      cards.forEach((card,index) => {
+<h2>Espresso</h2>
 
-        setTimeout(() => {
-          card.classList.add('show');
-        }, index * 200);
+<span class="price">$4.00</span>
 
-      });
+<button class="menu-btn">
+Order Now
+</button>
 
-    });
+</div>
 
-  </script>
+</div>
+
+<!-- CARD 3 -->
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop" alt="Latte">
+
+<div class="menu-content">
+
+<h2>Latte</h2>
+
+<span class="price">$6.00</span>
+
+<button class="menu-btn">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1200&auto=format&fit=crop" alt="Cold Coffee">
+
+<div class="menu-content">
+
+<h2>Cold Coffee</h2>
+
+<span class="price">$7.00</span>
+
+<button class="menu-btn">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const cards = document.querySelectorAll('.menu-card');
+
+window.addEventListener('load', () => {
+
+  cards.forEach((card,index) => {
+
+    setTimeout(() => {
+
+      card.classList.add('show');
+
+    }, index * 200);
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>

@@ -1,258 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Customer Reviews</title>
+
+  <!-- Google Font -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
     *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
     }
 
-    /* ================= BODY ================= */
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
-      min-height: 100vh;
-      background: linear-gradient(135deg,#6a11cb,#2575fc);
-      color: white;
-      overflow-x: hidden;
-      position: relative;
-      padding: 60px 20px;
+
+      min-height:100vh;
+      overflow-x:hidden;
+      position:relative;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+      url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+
+      padding:30px 20px;
+      color:white;
     }
 
-    /* ================= GLOW BACKGROUND ================= */
-
-    body::before{
-      content: "";
-      position: fixed;
-      width: 250px;
-      height: 250px;
-      background: #ff4ecd;
-      border-radius: 50%;
-      filter: blur(70px);
-      top: 10%;
-      left: 10%;
-      opacity: 0.5;
-      animation: float 5s infinite alternate ease-in-out;
-      z-index: 0;
+    img{
+      width:100%;
+      display:block;
     }
 
-    body::after{
-      content: "";
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      background: #00ffd5;
-      border-radius: 50%;
-      filter: blur(70px);
-      bottom: 10%;
-      right: 10%;
-      opacity: 0.5;
-      animation: float 5s infinite alternate ease-in-out;
-      z-index: 0;
+    /* ================= NAVBAR ================= */
+
+    .navbar{
+
+      width:100%;
+      max-width:1300px;
+      margin:auto;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:18px 40px;
+
+      background:rgba(255,255,255,0.08);
+
+      backdrop-filter:blur(15px);
+
+      border:1px solid rgba(255,255,255,0.15);
+
+      border-radius:20px;
+
+      position:sticky;
+      top:15px;
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .nav-links{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:white;
+      font-size:17px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0%;
+      height:2px;
+      background:#ffb347;
+      transition:0.4s;
+    }
+
+    .nav-links a:hover{
+      color:#ffb347;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    /* ================= GLOW EFFECT ================= */
+
+    .circle{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:0.35;
+      z-index:0;
+      animation:float 6s infinite alternate ease-in-out;
+    }
+
+    .circle1{
+      width:250px;
+      height:250px;
+      background:#ff9966;
+      top:5%;
+      left:-60px;
+    }
+
+    .circle2{
+      width:280px;
+      height:280px;
+      background:#ff5e62;
+      bottom:5%;
+      right:-60px;
     }
 
     @keyframes float{
+
       from{
-        transform: translateY(0px);
+        transform:translateY(0px);
       }
 
       to{
-        transform: translateY(30px);
+        transform:translateY(30px);
       }
+
     }
 
-    /* ================= MAIN CONTAINER ================= */
+    /* ================= MAIN SECTION ================= */
 
     .reviews{
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
+
+      width:100%;
+      max-width:1200px;
+      margin:auto;
+      margin-top:60px;
+      margin-left: 30px;
+      position:relative;
+      z-index:2;
     }
 
     .reviews h2{
-      text-align: center;
-      font-size: 50px;
-      margin-bottom: 50px;
-      color: white;
+
+      text-align:center;
+      font-size:55px;
+      margin-bottom:15px;
+      font-weight:700;
+    }
+
+    .reviews p{
+
+      text-align:center;
+      color:rgba(255,255,255,0.8);
+      margin-bottom:50px;
+      font-size:17px;
     }
 
     /* ================= REVIEW FORM ================= */
 
     .review-form{
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 25px;
-      padding: 30px;
-      margin-bottom: 50px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+      background:rgba(255,255,255,0.10);
+
+      backdrop-filter:blur(18px);
+
+      border:1px solid rgba(255,255,255,0.15);
+
+      border-radius:28px;
+
+      padding:35px;
+
+      margin-bottom:50px;
+
+      box-shadow:0 10px 35px rgba(0,0,0,0.35);
     }
 
     .review-form input,
     .review-form textarea,
     .review-form select{
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 12px;
-      outline: none;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      font-size: 15px;
+
+      width:100%;
+
+      padding:15px;
+
+      margin-bottom:20px;
+
+      border:none;
+      outline:none;
+
+      border-radius:14px;
+
+      background:rgba(255,255,255,0.15);
+
+      color:white;
+
+      font-size:15px;
     }
 
     .review-form input::placeholder,
     .review-form textarea::placeholder{
-      color: rgba(255,255,255,0.7);
+      color:rgba(255,255,255,0.7);
+    }
+
+    .review-form textarea{
+      resize:none;
     }
 
     .review-form select option{
-      color: black;
+      color:black;
     }
 
     .review-form input:focus,
     .review-form textarea:focus,
     .review-form select:focus{
-      background: rgba(255,255,255,0.3);
+
+      background:rgba(255,255,255,0.22);
     }
 
+    /* ================= BUTTON ================= */
+
     .review-form button{
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(45deg,#030303,#535555);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
+
+      width:100%;
+
+      padding:15px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:linear-gradient(135deg,#ff9966,#ff5e62);
+
+      color:white;
+
+      font-size:16px;
+      font-weight:600;
+
+      cursor:pointer;
+
+      transition:0.4s;
     }
 
     .review-form button:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+      transform:translateY(-3px);
+
+      box-shadow:0 10px 25px rgba(255,94,98,0.4);
     }
 
-    /* ================= REVIEW CARDS ================= */
+    /* ================= REVIEW GRID ================= */
 
     .review-container{
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 30px;
+
+      display:grid;
+
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+      gap:30px;
     }
 
+    /* ================= REVIEW CARD ================= */
+
     .review-card{
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 25px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transition: 0.4s;
+
+      background:rgba(255,255,255,0.10);
+
+      backdrop-filter:blur(18px);
+
+      border:1px solid rgba(255,255,255,0.15);
+
+      border-radius:28px;
+
+      padding:30px;
+
+      text-align:center;
+
+      transition:0.4s;
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
     }
 
     .review-card:hover{
-      transform: translateY(-10px);
+
+      transform:translateY(-10px);
     }
 
     .review-card img{
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid #232424;
+
+      width:90px;
+      height:90px;
+
+      border-radius:50%;
+
+      object-fit:cover;
+
+      margin:auto;
+      margin-bottom:20px;
+
+      border:4px solid rgba(255,255,255,0.3);
     }
 
     .review-card h3{
-      margin-bottom: 10px;
-      font-size: 24px;
+
+      font-size:24px;
+      margin-bottom:10px;
     }
 
     .stars{
-      margin-bottom: 15px;
-      font-size: 20px;
-      color: #ffd700;
+
+      font-size:22px;
+      margin-bottom:15px;
+      color:#ffd700;
     }
 
     .review-card span{
-      line-height: 1.7;
-      color: rgba(255,255,255,0.85);
-      display: block;
+
+      color:rgba(255,255,255,0.8);
+
+      line-height:1.8;
+      font-size:15px;
     }
 
-    /* ================= MOBILE RESPONSIVE ================= */
+    /* ================= MOBILE ================= */
 
-    @media (max-width:768px){
+    @media(max-width:768px){
 
       body{
-        padding: 30px 15px;
+        padding:18px 12px;
+        background-attachment:scroll;
+      }
+
+      .navbar{
+
+        padding:15px 20px;
+
+        border-radius:16px;
+      }
+
+      .logo{
+        font-size:22px;
+      }
+
+      .nav-links{
+        gap:15px;
+      }
+
+      .nav-links a{
+        font-size:14px;
+      }
+
+      .reviews{
+        margin-top:40px;
       }
 
       .reviews h2{
-        font-size: 34px;
-        margin-bottom: 30px;
+        font-size:36px;
+      }
+
+      .reviews p{
+        font-size:15px;
+        margin-bottom:35px;
       }
 
       .review-form{
-        padding: 20px;
-        border-radius: 20px;
-      }
-
-      .review-form input,
-      .review-form textarea,
-      .review-form select{
-        padding: 12px;
-        font-size: 14px;
-      }
-
-      .review-form button{
-        padding: 13px;
-        font-size: 15px;
+        padding:22px;
+        border-radius:22px;
       }
 
       .review-container{
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns:1fr;
+        gap:22px;
       }
 
       .review-card{
-        padding: 20px;
-      }
-
-      .review-card h3{
-        font-size: 20px;
+        padding:22px;
       }
 
       .review-card img{
-        width: 75px;
-        height: 75px;
+        width:75px;
+        height:75px;
+      }
+
+      .review-card h3{
+        font-size:21px;
       }
 
       .stars{
-        font-size: 18px;
+        font-size:18px;
       }
 
-      body::before{
-        width: 180px;
-        height: 180px;
+      .circle1{
+        width:150px;
+        height:150px;
       }
 
-      body::after{
-        width: 220px;
-        height: 220px;
+      .circle2{
+        width:170px;
+        height:170px;
       }
+
+    }
+
+    /* ================= SMALL MOBILE ================= */
+
+    @media(max-width:480px){
+
+      .navbar{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+      }
+
+      .reviews h2{
+        font-size:30px;
+      }
+
+      .review-form{
+        padding:18px;
+      }
+
     }
 
   </style>
@@ -260,11 +454,50 @@
 
 <body>
 
-  <!-- Reviews Section -->
+  <!-- Glow -->
+
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <!-- Navbar -->
+
+  <header>
+
+    <nav class="navbar">
+
+      <div class="logo">
+        ☕ Fresh Coffee
+      </div>
+
+      <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="menu.html">Menu</a></li>
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+
+        <li><a href="review.html">Review</a></li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- Reviews -->
 
   <section class="reviews">
 
-    <h2>Customer Reviews 💬</h2>
+    <h2>
+      Customer Reviews 💬
+    </h2>
+
+    <p>
+      What our coffee lovers say about us
+    </p>
 
     <!-- Review Form -->
 
@@ -277,10 +510,15 @@
       <select id="rating" required>
 
         <option value="">Select Rating</option>
+
         <option value="⭐">⭐</option>
+
         <option value="⭐⭐">⭐⭐</option>
+
         <option value="⭐⭐⭐">⭐⭐⭐</option>
+
         <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+
         <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
 
       </select>
@@ -294,6 +532,8 @@
     <!-- Review Cards -->
 
     <div class="review-container" id="reviewContainer">
+
+      <!-- Card 1 -->
 
       <div class="review-card">
 
@@ -309,6 +549,8 @@
 
       </div>
 
+      <!-- Card 2 -->
+
       <div class="review-card">
 
         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
@@ -322,6 +564,8 @@
         </span>
 
       </div>
+
+      <!-- Card 3 -->
 
       <div class="review-card">
 
@@ -344,6 +588,7 @@
   <script>
 
     const reviewForm = document.getElementById('reviewForm');
+
     const reviewContainer = document.getElementById('reviewContainer');
 
     reviewForm.addEventListener('submit', function(e){
@@ -351,15 +596,18 @@
       e.preventDefault();
 
       const name = document.getElementById('name').value;
+
       const message = document.getElementById('message').value;
+
       const rating = document.getElementById('rating').value;
 
-      // Random Profile Image
+      // Random Profile
 
       const randomNumber = Math.floor(Math.random() * 90);
+
       const gender = Math.random() > 0.5 ? "men" : "women";
 
-      // Create Review Card
+      // Create Card
 
       const reviewCard = document.createElement('div');
 
