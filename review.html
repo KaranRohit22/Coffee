@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ================= BODY ================= */
+
+    body{
+      min-height: 100vh;
+      background: linear-gradient(135deg,#6a11cb,#2575fc);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+      padding: 60px 20px;
+    }
+
+    /* ================= GLOW BACKGROUND ================= */
+
+    body::before{
+      content: "";
+      position: fixed;
+      width: 250px;
+      height: 250px;
+      background: #ff4ecd;
+      border-radius: 50%;
+      filter: blur(70px);
+      top: 10%;
+      left: 10%;
+      opacity: 0.5;
+      animation: float 5s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    body::after{
+      content: "";
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: #00ffd5;
+      border-radius: 50%;
+      filter: blur(70px);
+      bottom: 10%;
+      right: 10%;
+      opacity: 0.5;
+      animation: float 5s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes float{
+      from{
+        transform: translateY(0px);
+      }
+
+      to{
+        transform: translateY(30px);
+      }
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+
+    .reviews{
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .reviews h2{
+      text-align: center;
+      font-size: 50px;
+      margin-bottom: 50px;
+      color: white;
+    }
+
+    /* ================= REVIEW FORM ================= */
+
+    .review-form{
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 25px;
+      padding: 30px;
+      margin-bottom: 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .review-form input,
+    .review-form textarea,
+    .review-form select{
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-size: 15px;
+    }
+
+    .review-form input::placeholder,
+    .review-form textarea::placeholder{
+      color: rgba(255,255,255,0.7);
+    }
+
+    .review-form select option{
+      color: black;
+    }
+
+    .review-form input:focus,
+    .review-form textarea:focus,
+    .review-form select:focus{
+      background: rgba(255,255,255,0.3);
+    }
+
+    .review-form button{
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg,#030303,#535555);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .review-form button:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ================= REVIEW CARDS ================= */
+
+    .review-container{
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 30px;
+    }
+
+    .review-card{
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 25px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: 0.4s;
+    }
+
+    .review-card:hover{
+      transform: translateY(-10px);
+    }
+
+    .review-card img{
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #232424;
+    }
+
+    .review-card h3{
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .stars{
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #ffd700;
+    }
+
+    .review-card span{
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+      display: block;
+    }
+
+    /* ================= MOBILE RESPONSIVE ================= */
+
+    @media (max-width:768px){
+
+      body{
+        padding: 30px 15px;
+      }
+
+      .reviews h2{
+        font-size: 34px;
+        margin-bottom: 30px;
+      }
+
+      .review-form{
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .review-form input,
+      .review-form textarea,
+      .review-form select{
+        padding: 12px;
+        font-size: 14px;
+      }
+
+      .review-form button{
+        padding: 13px;
+        font-size: 15px;
+      }
+
+      .review-container{
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .review-card{
+        padding: 20px;
+      }
+
+      .review-card h3{
+        font-size: 20px;
+      }
+
+      .review-card img{
+        width: 75px;
+        height: 75px;
+      }
+
+      .stars{
+        font-size: 18px;
+      }
+
+      body::before{
+        width: 180px;
+        height: 180px;
+      }
+
+      body::after{
+        width: 220px;
+        height: 220px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Reviews Section -->
+
+  <section class="reviews">
+
+    <h2>Customer Reviews 💬</h2>
+
+    <!-- Review Form -->
+
+    <form class="review-form" id="reviewForm">
+
+      <input type="text" id="name" placeholder="Enter Your Name" required>
+
+      <textarea id="message" rows="4" placeholder="Write Your Review" required></textarea>
+
+      <select id="rating" required>
+
+        <option value="">Select Rating</option>
+        <option value="⭐">⭐</option>
+        <option value="⭐⭐">⭐⭐</option>
+        <option value="⭐⭐⭐">⭐⭐⭐</option>
+        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+
+      </select>
+
+      <button type="submit">
+        Submit Review
+      </button>
+
+    </form>
+
+    <!-- Review Cards -->
+
+    <div class="review-container" id="reviewContainer">
+
+      <div class="review-card">
+
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+
+        <h3>Sarah</h3>
+
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+
+        <span>
+          Best coffee ever! Amazing atmosphere and delicious drinks.
+        </span>
+
+      </div>
+
+      <div class="review-card">
+
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+
+        <h3>John</h3>
+
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+
+        <span>
+          Friendly staff and excellent coffee quality.
+        </span>
+
+      </div>
+
+      <div class="review-card">
+
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+
+        <h3>Emma</h3>
+
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+
+        <span>
+          Beautiful ambience and delicious cold coffee.
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewContainer = document.getElementById('reviewContainer');
+
+    reviewForm.addEventListener('submit', function(e){
+
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+      const rating = document.getElementById('rating').value;
+
+      // Random Profile Image
+
+      const randomNumber = Math.floor(Math.random() * 90);
+      const gender = Math.random() > 0.5 ? "men" : "women";
+
+      // Create Review Card
+
+      const reviewCard = document.createElement('div');
+
+      reviewCard.classList.add('review-card');
+
+      reviewCard.innerHTML = `
+
+        <img src="https://randomuser.me/api/portraits/${gender}/${randomNumber}.jpg" alt="">
+
+        <h3>${name}</h3>
+
+        <div class="stars">${rating}</div>
+
+        <span>${message}</span>
+
+      `;
+
+      reviewContainer.prepend(reviewCard);
+
+      // Reset Form
+
+      reviewForm.reset();
+
+    });
+
+  </script>
+
+</body>
+</html>

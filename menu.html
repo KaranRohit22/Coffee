@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coffee Menu</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg,#6a11cb,#2575fc);
+      min-height:100vh;
+      padding:40px 20px;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* ================= BACKGROUND GLOW ================= */
+
+    .circle{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(60px);
+      opacity:0.5;
+      animation:float 5s infinite alternate ease-in-out;
+      z-index:0;
+    }
+
+    .circle1{
+      width:250px;
+      height:250px;
+      background:#ff4ecd;
+      top:5%;
+      left:5%;
+    }
+
+    .circle2{
+      width:300px;
+      height:300px;
+      background:#00ffd5;
+      bottom:5%;
+      right:5%;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(0px);
+      }
+      to{
+        transform:translateY(30px);
+      }
+    }
+
+    /* ================= MENU SECTION ================= */
+
+    .menu-section{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .menu-title{
+      text-align:center;
+      font-size:50px;
+      color:white;
+      margin-bottom:50px;
+    }
+
+    .menu-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    /* ================= MENU CARD ================= */
+
+    .menu-card{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:25px;
+      overflow:hidden;
+      color:white;
+      transition:0.4s;
+      box-shadow:0 8px 20px rgba(0,0,0,0.2);
+
+      opacity:0;
+      transform:translateY(40px);
+    }
+
+    .menu-card.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .menu-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .menu-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      transition:0.4s;
+      display:block;
+    }
+
+    .menu-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .menu-content{
+      padding:20px;
+      text-align:center;
+    }
+
+    .menu-content h2{
+      margin-bottom:10px;
+      font-size:28px;
+    }
+
+    .price{
+      display:block;
+      color:#00ffd5;
+      font-size:20px;
+      margin-bottom:15px;
+    }
+
+    .menu-btn{
+      padding:12px 25px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(45deg,#ff4ecd,#00ffd5);
+      color:white;
+      font-size:15px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+      width:100%;
+    }
+
+    .menu-btn:hover{
+      transform:scale(1.03);
+      box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ================= MOBILE RESPONSIVE ================= */
+
+    /* ================= MOBILE RESPONSIVE ================= */
+
+@media screen and (max-width:768px){
+
+  body{
+    padding: 20px 12px;
+  }
+
+  .menu-section{
+    width: 100%;
+  }
+
+  .menu-title{
+    font-size: 32px;
+    line-height: 1.3;
+    margin-bottom: 25px;
+  }
+
+  .menu-container{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .menu-card{
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .menu-card img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .menu-content{
+    padding: 18px 15px;
+  }
+
+  .menu-content h2{
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .price{
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .menu-btn{
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  /* Glow circles smaller */
+
+  .circle1{
+    width: 150px;
+    height: 150px;
+    top: 0;
+    left: -40px;
+  }
+
+  .circle2{
+    width: 180px;
+    height: 180px;
+    right: -50px;
+    bottom: 0;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media screen and (max-width:480px){
+
+  body{
+    padding: 15px 10px;
+     min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  }
+
+  .menu-title{
+    font-size: 26px;
+  }
+
+  .menu-card img{
+    height: 190px;
+  }
+
+  .menu-content{
+    padding: 15px;
+  }
+
+  .menu-content h2{
+    font-size: 20px;
+  }
+
+  .price{
+    font-size: 16px;
+  }
+
+  .menu-btn{
+    font-size: 14px;
+    padding: 11px;
+  }
+
+}
+
+    /* ================= EXTRA SMALL DEVICES ================= */
+
+    @media(max-width:480px){
+
+      .menu-title{
+        font-size:28px;
+      }
+
+      .menu-card img{
+        height:200px;
+      }
+
+      .menu-content h2{
+        font-size:22px;
+      }
+
+      .price{
+        font-size:16px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Glow -->
+
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <!-- Menu Section -->
+
+  <section class="menu-section">
+
+    <h1 class="menu-title">Our Coffee Menu ☕</h1>
+
+    <div class="menu-container">
+
+      <!-- Card 1 -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" alt="Cappuccino">
+
+        <div class="menu-content">
+          <h2>Cappuccino</h2>
+          <span class="price">$5.00</span>
+          <button class="menu-btn">Order Now</button>
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Espresso">
+
+        <div class="menu-content">
+          <h2>Espresso</h2>
+          <span class="price">$4.00</span>
+          <button class="menu-btn">Order Now</button>
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop" alt="Latte">
+
+        <div class="menu-content">
+          <h2>Latte</h2>
+          <span class="price">$6.00</span>
+          <button class="menu-btn">Order Now</button>
+        </div>
+
+      </div>
+
+      <!-- Card 4 -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1200&auto=format&fit=crop" alt="Cold Coffee">
+
+        <div class="menu-content">
+          <h2>Cold Coffee</h2>
+          <span class="price">$7.00</span>
+          <button class="menu-btn">Order Now</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    // Card Animation
+
+    const cards = document.querySelectorAll('.menu-card');
+
+    window.addEventListener('load', () => {
+
+      cards.forEach((card,index) => {
+
+        setTimeout(() => {
+          card.classList.add('show');
+        }, index * 200);
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

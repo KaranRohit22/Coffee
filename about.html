@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#6a11cb,#2575fc);
+  overflow-x:hidden;
+  position:relative;
+  padding:40px 15px;
+}
+
+/* ================= BACKGROUND ================= */
+
+.circle{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.5;
+  z-index:0;
+  animation:float 5s infinite alternate ease-in-out;
+}
+
+.circle1{
+  width:250px;
+  height:250px;
+  background:#ff4ecd;
+  top:10%;
+  left:10%;
+}
+
+.circle2{
+  width:300px;
+  height:300px;
+  background:#00ffd5;
+  bottom:10%;
+  right:10%;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(0px);
+  }
+  to{
+    transform:translateY(30px);
+  }
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:40px;
+  border-radius:25px;
+
+  background:rgba(255,255,255,0.12);
+
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+
+  position:relative;
+  z-index:2;
+}
+
+/* ================= CONTAINER ================= */
+
+.about-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+/* ================= IMAGE ================= */
+
+.about-image{
+  width:100%;
+}
+
+.about-image img{
+  width:100%;
+  display:block;
+  border-radius:20px;
+  object-fit:cover;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+
+.about-image img:hover{
+  transform:scale(1.03);
+}
+
+/* ================= CONTENT ================= */
+
+.about-content{
+  color:white;
+}
+
+.about-content h2{
+  font-size:45px;
+  margin-bottom:20px;
+}
+
+.about-content p{
+  font-size:17px;
+  line-height:1.8;
+  margin-bottom:20px;
+  color:rgba(255,255,255,0.85);
+}
+
+.about-btn{
+  padding:14px 30px;
+  border:none;
+  border-radius:12px;
+
+  background:linear-gradient(45deg,#ff4ecd,#00ffd5);
+
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.about-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= ANIMATION ================= */
+
+.hidden{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:900px){
+
+  .about-container{
+    grid-template-columns:1fr;
+  }
+
+  .about-content{
+    text-align:center;
+  }
+
+  .about-content h2{
+    font-size:38px;
+  }
+
+  .about-btn{
+    width:100%;
+  }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  body{
+    padding:20px 12px;
+  }
+
+  .about-section{
+    padding:25px 18px;
+    border-radius:20px;
+  }
+
+  .about-container{
+    padding: 10px;
+    gap:25px;
+  }
+
+  .about-content h2{
+    font-size:30px;
+  }
+
+  .about-content p{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  .about-btn{
+    width:100%;
+    padding:13px;
+    font-size:15px;
+  }
+
+  .about-image img{
+    border-radius:15px;
+
+  }
+
+  
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background -->
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+
+<!-- About Section -->
+
+<section class="about-section hidden">
+
+  <div class="about-container">
+
+    <div class="about-image">
+
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop" alt="Coffee Shop">
+
+    </div>
+
+    <div class="about-content">
+
+      <h2>About Us</h2>
+
+      <p>
+        Welcome to <strong>FreshCoffee</strong> ☕
+        We serve premium quality coffee made from freshly roasted beans
+        with love and passion.
+      </p>
+
+      <p>
+        Our mission is to create a relaxing environment where people can
+        enjoy delicious coffee, connect with friends, and make memories.
+      </p>
+
+      <button class="about-btn">
+        Learn More
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+const hiddenElement = document.querySelector('.hidden');
+
+window.addEventListener('load', () => {
+
+  hiddenElement.classList.add('show');
+
+});
+
+</script>
+
+</body>
+</html>
