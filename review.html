@@ -25,23 +25,21 @@
 
     body{
 
-      width:100%;
       min-height:100vh;
 
       overflow-x:hidden;
 
-      position:relative;
-
       background:
-      linear-gradient(rgba(20,10,5,0.78),rgba(20,10,5,0.82)),
+      linear-gradient(rgba(20,10,5,0.75),rgba(20,10,5,0.75)),
       url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop');
 
       background-size:cover;
       background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:scroll;
+      background-attachment:fixed;
 
       color:white;
+
+      position:relative;
     }
 
     img{
@@ -61,7 +59,7 @@
       padding:20px;
     }
 
-    /* ================= GLOW BACKGROUND ================= */
+    /* ================= GLOW EFFECT ================= */
 
     .circle{
 
@@ -118,29 +116,27 @@
 
       width:100%;
 
-      display:flex;
+  padding:20px 8%;
 
-      justify-content:space-between;
+  display:flex;
 
-      align-items:center;
+  justify-content:space-between;
 
-      padding:18px 25px;
+  align-items:center;
 
-      background:rgba(255,255,255,0.08);
+  position:fixed;
 
-      backdrop-filter:blur(18px);
+  top:0;
+  left:0;
 
-      border:1px solid rgba(255,255,255,0.12);
+  z-index:1000;
 
-      border-radius:22px;
+  background:rgba(255,255,255,0.08);
 
-      position:sticky;
+  backdrop-filter:blur(12px);
 
-      top:10px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 
-      z-index:1000;
-
-      box-shadow:0 8px 25px rgba(0,0,0,0.35);
     }
 
     .logo{
@@ -152,13 +148,42 @@
       color:#ffd59e;
     }
 
+    /* ================= DESKTOP NAV ================= */
+
+    .nav-links{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:30px;
+
+      list-style:none;
+    }
+
+    .nav-links a{
+
+      text-decoration:none;
+
+      color:white;
+
+      font-size:17px;
+
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+
+      color:#ffb347;
+    }
+
     /* ================= TOGGLE BUTTON ================= */
 
     .menu-toggle{
 
-      width:42px;
+      width:40px;
 
-      height:32px;
+      height:30px;
 
       display:none;
 
@@ -184,7 +209,7 @@
       transition:0.4s;
     }
 
-    /* TOGGLE ANIMATION */
+    /* ================= TOGGLE ANIMATION ================= */
 
     .menu-toggle.active span:nth-child(1){
 
@@ -201,42 +226,13 @@
       transform:rotate(-45deg) translate(7px,-7px);
     }
 
-    /* ================= DESKTOP NAV LINKS ================= */
-
-    .nav-links{
-
-      display:flex;
-
-      align-items:center;
-
-      list-style:none;
-
-      gap:30px;
-    }
-
-    .nav-links a{
-
-      text-decoration:none;
-
-      color:white;
-
-      font-size:17px;
-
-      transition:0.3s;
-    }
-
-    .nav-links a:hover{
-
-      color:#ffb347;
-    }
-
-    /* ================= MAIN SECTION ================= */
+    /* ================= REVIEWS SECTION ================= */
 
     .reviews{
 
       width:100%;
 
-      margin-top:50px;
+      margin-top:70px;
 
       position:relative;
 
@@ -260,7 +256,7 @@
 
       color:rgba(255,255,255,0.82);
 
-      margin-bottom:55px;
+      margin-bottom:50px;
 
       font-size:17px;
     }
@@ -271,112 +267,146 @@
 
       width:100%;
 
-      background:linear-gradient(
-      135deg,
-      rgba(255,183,77,0.15),
-      rgba(255,94,98,0.10),
-      rgba(255,255,255,0.08)
-      );
+      max-width:800px;
+
+      margin:auto;
+
+      background:rgba(255,255,255,0.08);
 
       backdrop-filter:blur(20px);
 
-      border:1px solid rgba(255,255,255,0.12);
+      border:2px solid rgba(255,183,77,0.35);
 
-      border-radius:32px;
+      border-radius:30px;
 
       padding:40px;
 
-      margin-bottom:60px;
+      margin-bottom:50px;
 
       box-shadow:0 12px 40px rgba(0,0,0,0.4);
-
-      overflow:hidden;
     }
 
-    .review-form input,
-    .review-form textarea,
-    .review-form select{
+    /* ================= INPUT GLOW EFFECT ================= */
 
-      width:100%;
+.review-form input,
+.review-form textarea,
+.review-form select{
 
-      padding:16px 18px;
+  width:100%;
 
-      margin-bottom:22px;
+  padding:16px 18px;
 
-      border:2px solid rgba(255,183,77,0.45);
+  margin-bottom:22px;
 
-      outline:none;
+  border:2px solid rgba(255,183,77,0.35);
 
-      border-radius:16px;
+  outline:none;
 
-      background:rgba(255,255,255,0.12);
+  border-radius:16px;
 
-      color:white;
+  background:rgba(255,255,255,0.10);
 
-      font-size:15px;
+  color:white;
 
-      transition:0.3s;
-    }
+  font-size:15px;
 
-    .review-form input::placeholder,
-    .review-form textarea::placeholder{
+  transition:0.4s ease;
 
-      color:rgba(255,255,255,0.65);
-    }
+  box-shadow:0 0 0 rgba(0,0,0,0);
+}
 
-    .review-form textarea{
-      resize:none;
-    }
+/* PLACEHOLDER */
+
+.review-form input::placeholder,
+.review-form textarea::placeholder{
+
+  color:rgba(255,255,255,0.65);
+}
+
+/* FOCUS + HOVER GLOW */
+
+.review-form input:hover,
+.review-form textarea:hover,
+.review-form select:hover,
+.review-form input:focus,
+.review-form textarea:focus,
+.review-form select:focus{
+
+  border-color:#ffb347;
+
+  background:rgba(255,255,255,0.16);
+
+  box-shadow:
+  0 0 10px rgba(255,179,71,0.5),
+  0 0 20px rgba(255,94,98,0.3);
+
+  transform:scale(1.01);
+}
+
+/* TEXTAREA */
+
+.review-form textarea{
+  resize:none;
+}
+
+/* SELECT OPTION */
+
+.review-form select option{
+  color:black;
+}
+
+/* ================= BUTTON GLOW ================= */
+
+.review-form button{
+
+  width:100%;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:linear-gradient(
+  135deg,
+  #ffb347,
+  #ff5e62
+  );
+
+  color:white;
+
+  font-size:16px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.4s ease;
+
+  box-shadow:
+  0 0 10px rgba(255,179,71,0.3);
+}
+
+/* BUTTON HOVER */
+
+.review-form button:hover{
+
+  transform:translateY(-4px) scale(1.02);
+
+  box-shadow:
+  0 0 15px rgba(255,179,71,0.7),
+  0 0 35px rgba(255,94,98,0.5),
+  0 8px 20px rgba(0,0,0,0.35);
+}
+
+   
 
     .review-form select option{
       color:black;
     }
 
-    .review-form input:focus,
-    .review-form textarea:focus,
-    .review-form select:focus{
-
-      background:rgba(255,255,255,0.18);
-
-      border:2px solid #ffb347;
-
-      box-shadow:0 0 18px rgba(255,183,77,0.45);
-    }
-
-    /* ================= BUTTON ================= */
-
-    .review-form button{
-
-      width:100%;
-
-      padding:16px;
-
-      border:none;
-
-      border-radius:16px;
-
-      background:linear-gradient(
-      135deg,
-      #ffb347,
-      #ff5e62
-      );
-
-      color:white;
-
-      font-size:16px;
-
-      font-weight:600;
-
-      cursor:pointer;
-
-      transition:0.4s;
-    }
-
-    .review-form button:hover{
-
-      transform:translateY(-4px);
-
-      box-shadow:0 6px 20px rgba(255,94,98,0.45);
+    .review-form textarea{
+      resize:none;
     }
 
     /* ================= REVIEW GRID ================= */
@@ -390,6 +420,33 @@
       gap:30px;
     }
 
+    .review-form:hover{
+ animation:glow 1.5s infinite alternate;
+  transform:translateY(-3 px);
+
+  box-shadow:
+  0 0 10px rgba(255,179,71,0.4),
+  0 0 10px rgba(255,94,98,0.35),
+ 
+}
+
+@keyframes glow{
+
+  from{
+
+    box-shadow:
+    0 0 15px #ffb347,
+    0 0 30px #ff5e62;
+  }
+
+  to{
+
+    box-shadow:
+    0 0 25px #ffb347,
+    0 0 50px #ff5e62;
+  }
+}
+
     /* ================= REVIEW CARD ================= */
 
     .review-card{
@@ -400,15 +457,13 @@
 
       border:1px solid rgba(255,255,255,0.12);
 
-      border-radius:28px;
+      border-radius:25px;
 
       padding:30px;
 
       text-align:center;
 
       transition:0.4s;
-
-      box-shadow:0 10px 30px rgba(0,0,0,0.35);
     }
 
     .review-card:hover{
@@ -419,7 +474,6 @@
     .review-card img{
 
       width:90px;
-
       height:90px;
 
       border-radius:50%;
@@ -428,7 +482,7 @@
 
       margin:auto;
 
-      margin-bottom:20px;
+      margin-bottom:18px;
 
       border:4px solid rgba(255,183,77,0.4);
     }
@@ -465,7 +519,7 @@
     @media(max-width:992px){
 
       .reviews h2{
-        font-size:46px;
+        font-size:45px;
       }
 
       .review-form{
@@ -479,11 +533,12 @@
     @media(max-width:768px){
 
       body{
-        padding:10px;
+
+        background-attachment:scroll;
       }
 
       .main-wrapper{
-        padding:10px;
+        padding:12px;
       }
 
       .navbar{
@@ -510,7 +565,7 @@
         position:absolute;
 
         top:80px;
-        right:0;
+        right:10px;
 
         width:220px;
 
@@ -528,7 +583,7 @@
 
         align-items:center;
 
-        gap:22px;
+        gap:20px;
 
         opacity:0;
 
@@ -548,17 +603,13 @@
         transform:translateY(0);
       }
 
-      .nav-links a{
-        font-size:16px;
-      }
-
       .reviews{
 
         margin-top:35px;
       }
 
       .reviews h2{
-
+  
         font-size:34px;
 
         line-height:1.3;
@@ -573,7 +624,7 @@
 
       .review-form{
 
-        padding:20px;
+        padding:22px;
 
         border-radius:22px;
       }
@@ -604,15 +655,9 @@
       .review-card{
 
         padding:22px;
-
-        border-radius:22px;
       }
 
       .review-card h3{
-        font-size:20px;
-      }
-
-      .stars{
         font-size:20px;
       }
 
@@ -622,18 +667,18 @@
 
       .circle1{
 
-        width:180px;
-        height:180px;
+        width:170px;
+        height:170px;
 
-        left:-60px;
+        left:-50px;
       }
 
       .circle2{
 
-        width:200px;
-        height:200px;
+        width:190px;
+        height:190px;
 
-        right:-60px;
+        right:-50px;
       }
 
     }
@@ -653,6 +698,8 @@
       .nav-links{
 
         width:190px;
+
+        right:5px;
 
         padding:18px;
       }
@@ -677,7 +724,7 @@
 
     }
 
-    /* ================= HIDE TOGGLE IN DESKTOP ================= */
+    /* ================= HIDE TOGGLE DESKTOP ================= */
 
     @media(min-width:769px){
 
@@ -689,17 +736,17 @@
 
         position:static;
 
-        width:auto;
-
-        background:none;
-
-        padding:0;
-
         opacity:1;
 
         visibility:visible;
 
         transform:none;
+
+        background:none;
+
+        width:auto;
+
+        padding:0;
 
         flex-direction:row;
       }
@@ -761,7 +808,7 @@
 
     </header>
 
-    <!-- Reviews -->
+    <!-- Reviews Section -->
 
     <section class="reviews">
 
@@ -879,7 +926,7 @@
 
       reviewCard.innerHTML = `
 
-        <img src="https://randomuser.me/api/portraits/${gender}/${randomNumber}.jpg" alt="">
+        <img src="" alt="">
 
         <h3>${name}</h3>
 
