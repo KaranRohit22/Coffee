@@ -76,48 +76,124 @@
       }
     }
 
-    /* ================= NAVBAR ================= */
 
-    .navbar{
-      width:100%;
-      padding:20px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:1000;
+ /* ================= NAVBAR ================= */
 
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(12px);
+.navbar{
 
-      border-bottom:1px solid rgba(255,255,255,0.1);
-    }
+  width:100%;
 
-    .logo{
-      font-size:30px;
-      font-weight:700;
-      color:#fff;
-    }
+  padding:20px 8%;
 
-    .nav-links{
-      display:flex;
-      list-style:none;
-      gap:30px;
-    }
+  display:flex;
 
-    .nav-links a{
-      text-decoration:none;
-      color:white;
-      font-size:17px;
-      transition:0.3s;
-    }
+  justify-content:space-between;
 
-    .nav-links a:hover{
-      color:#f97316;
-    }
+  align-items:center;
 
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  z-index:1000;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+  font-size:30px;
+  font-weight:700;
+  color:#fff;
+}
+
+/* NAV LINKS */
+
+/* NAV LINKS DESKTOP */
+
+.nav-links{
+
+  display:flex;
+
+  list-style:none;
+
+  gap:30px;
+}
+/* SHOW MENU */
+
+.nav-links.active{
+
+  opacity:1;
+  visibility:visible;
+
+  transform:translateY(0px);
+}
+
+.nav-links a{
+
+  text-decoration:none;
+
+  color:white;
+
+  font-size:18px;
+
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#f97316;
+}
+
+/* ================= HAMBURGER ================= */
+
+.menu-toggle{
+
+  width:40px;
+  height:35px;
+
+  display:none;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  cursor:pointer;
+
+  z-index:2000;
+}
+
+.menu-toggle span{
+
+  width:100%;
+  height:4px;
+
+  background:white;
+
+  border-radius:10px;
+
+  transition:0.4s;
+}
+
+/* ANIMATION */
+
+.menu-toggle.active span:nth-child(1){
+
+  transform:rotate(45deg) translate(8px,8px);
+}
+
+.menu-toggle.active span:nth-child(2){
+
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+
+  transform:rotate(-45deg) translate(7px,-7px);
+}
     /* ================= HERO SECTION ================= */
 
     .hero{
@@ -325,51 +401,119 @@
 
     }
 
-    /* ================= MOBILE ================= */
 
-    @media(max-width:768px){
+   /* ================= MOBILE ================= */
 
-      .navbar{
-        padding:18px 5%;
-        flex-direction:column;
-        gap:15px;
-      }
+@media(max-width:768px){
 
-      .logo{
-        font-size:26px;
-      }
+  body{
+    overflow-x:hidden;
+  }
 
-      .nav-links{
-        gap:18px;
-        flex-wrap:wrap;
-        justify-content:center;
-      }
+  .navbar{
 
-      .nav-links a{
-        font-size:15px;
-      }
+    padding:18px 5%;
 
-      .hero{
-        padding:180px 5% 60px;
-      }
+    flex-direction:row;
 
-      .hero-content h1{
-        font-size:40px;
-      }
+    justify-content:space-between;
 
-      .hero-content p{
-        font-size:16px;
-      }
+    align-items:center;
+  }
 
-      .section-title{
-        font-size:35px;
-      }
+  .logo{
+    font-size:24px;
+  }
 
-      .cta-box h2{
-        font-size:32px;
-      }
+  /* SHOW HAMBURGER */
 
-    }
+  .menu-toggle{
+    display:flex;
+  }
+
+  /* MOBILE MENU */
+
+  .nav-links{
+
+    position:absolute;
+
+    top:100%;
+    left:0;
+
+    width:100%;
+
+    background:rgba(20,10,5,0.96);
+
+    backdrop-filter:blur(15px);
+
+    border-top:1px solid rgba(255,255,255,0.1);
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:25px;
+
+    padding:0;
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:0.5s ease;
+  }
+
+  .nav-links.active{
+
+    max-height:500px;
+
+    padding:30px 0;
+  }
+
+  .nav-links a{
+    font-size:18px;
+  }
+
+  /* HERO */
+
+  .hero{
+    padding:120px 5% 60px;
+  }
+
+  .hero-container{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+  }
+
+  .hero-image{
+    order:-1;
+  }
+
+  .hero-content h1{
+    font-size:40px;
+  }
+
+  .hero-content p{
+    font-size:16px;
+  }
+
+  .hero-btns{
+    justify-content:center;
+  }
+
+  .section-title{
+    font-size:35px;
+  }
+
+  .cta-box h2{
+    font-size:32px;
+  }
+
+}
 
     @media(max-width:480px){
 
@@ -411,25 +555,37 @@
 
     <nav class="navbar">
 
-      <div class="logo">
-        ☕ Fresh Coffee
-      </div>
+  <div class="logo">
+    ☕ Fresh Coffee
+  </div>
 
-      <ul class="nav-links">
+  <!-- Hamburger -->
 
-        <li><a href="index.html">Home</a></li>
+  <div class="menu-toggle" id="menuToggle">
 
-        <li><a href="menu.html">Menu</a></li>
+    <span></span>
+    <span></span>
+    <span></span>
 
-        <li><a href="about.html">About</a></li>
+  </div>
 
-        <li><a href="contact.html">Contact</a></li>
+  <!-- Nav Links -->
 
-        <li><a href="review.html">Review</a></li>
+  <ul class="nav-links" id="navLinks">
 
-      </ul>
+    <li><a href="index.html">Home</a></li>
 
-    </nav>
+    <li><a href="menu.html">Menu</a></li>
+
+    <li><a href="about.html">About</a></li>
+
+    <li><a href="contact.html">Contact</a></li>
+
+    <li><a href="review.html">Review</a></li>
+
+  </ul>
+
+</nav>
 
   </header>
 
@@ -502,6 +658,46 @@
     </div>
 
   </section>
+  <script>
+    window.addEventListener("scroll", () => {
+  const cards = document.querySelectorAll(
+    ".coffee-card, .review-card"
+  );
+
+  cards.forEach((card) => {
+    const cardTop = card.getBoundingClientRect().top;
+
+    if(cardTop < window.innerHeight - 100){
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0px)";
+    }
+  });
+});
+
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+  menuToggle.classList.toggle("active");
+
+  navLinks.classList.toggle("active");
+
+});
+
+
+const Order = document.getElementById('Order');
+
+Order.addEventListener('click', () => {
+
+  window.location.href = "menu.html";
+
+});
+  </script>
 
   <!-- Footer -->
 

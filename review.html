@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Luxury Coffee Reviews</title>
 
   <!-- Google Font -->
@@ -23,8 +25,11 @@
 
     body{
 
+      width:100%;
       min-height:100vh;
+
       overflow-x:hidden;
+
       position:relative;
 
       background:
@@ -33,9 +38,9 @@
 
       background-size:cover;
       background-position:center;
-      background-attachment:fixed;
+      background-repeat:no-repeat;
+      background-attachment:scroll;
 
-      padding:30px 20px;
       color:white;
     }
 
@@ -44,29 +49,53 @@
       display:block;
     }
 
+    /* ================= MAIN WRAPPER ================= */
+
+    .main-wrapper{
+
+      width:100%;
+      max-width:1300px;
+
+      margin:auto;
+
+      padding:20px;
+    }
+
     /* ================= GLOW BACKGROUND ================= */
 
     .circle{
+
       position:absolute;
+
       border-radius:50%;
+
       filter:blur(90px);
+
       opacity:0.35;
+
       z-index:0;
+
       animation:float 6s infinite alternate ease-in-out;
     }
 
     .circle1{
+
       width:280px;
       height:280px;
+
       background:#ffb347;
+
       top:5%;
       left:-80px;
     }
 
     .circle2{
+
       width:320px;
       height:320px;
+
       background:#ff5e62;
+
       bottom:0%;
       right:-100px;
     }
@@ -88,14 +117,14 @@
     .navbar{
 
       width:100%;
-      max-width:1300px;
-      margin:auto;
 
       display:flex;
+
       justify-content:space-between;
+
       align-items:center;
 
-      padding:18px 40px;
+      padding:18px 25px;
 
       background:rgba(255,255,255,0.08);
 
@@ -106,49 +135,99 @@
       border-radius:22px;
 
       position:sticky;
-      top:15px;
+
+      top:10px;
+
       z-index:1000;
 
       box-shadow:0 8px 25px rgba(0,0,0,0.35);
     }
 
     .logo{
+
       font-size:30px;
+
       font-weight:700;
+
       color:#ffd59e;
     }
 
+    /* ================= TOGGLE BUTTON ================= */
+
+    .menu-toggle{
+
+      width:42px;
+
+      height:32px;
+
+      display:none;
+
+      flex-direction:column;
+
+      justify-content:space-between;
+
+      cursor:pointer;
+
+      z-index:2000;
+    }
+
+    .menu-toggle span{
+
+      width:100%;
+
+      height:4px;
+
+      background:white;
+
+      border-radius:10px;
+
+      transition:0.4s;
+    }
+
+    /* TOGGLE ANIMATION */
+
+    .menu-toggle.active span:nth-child(1){
+
+      transform:rotate(45deg) translate(7px,7px);
+    }
+
+    .menu-toggle.active span:nth-child(2){
+
+      opacity:0;
+    }
+
+    .menu-toggle.active span:nth-child(3){
+
+      transform:rotate(-45deg) translate(7px,-7px);
+    }
+
+    /* ================= DESKTOP NAV LINKS ================= */
+
     .nav-links{
+
       display:flex;
+
+      align-items:center;
+
       list-style:none;
+
       gap:30px;
     }
 
     .nav-links a{
-      text-decoration:none;
-      color:white;
-      font-size:17px;
-      transition:0.3s;
-      position:relative;
-    }
 
-    .nav-links a::after{
-      content:'';
-      position:absolute;
-      left:0;
-      bottom:-5px;
-      width:0%;
-      height:2px;
-      background:#ffb347;
-      transition:0.4s;
+      text-decoration:none;
+
+      color:white;
+
+      font-size:17px;
+
+      transition:0.3s;
     }
 
     .nav-links a:hover{
-      color:#ffb347;
-    }
 
-    .nav-links a:hover::after{
-      width:100%;
+      color:#ffb347;
     }
 
     /* ================= MAIN SECTION ================= */
@@ -156,34 +235,41 @@
     .reviews{
 
       width:100%;
-      max-width:1200px;
-      margin:auto;
-      margin-top:70px;
+
+      margin-top:50px;
 
       position:relative;
+
       z-index:2;
     }
 
     .reviews h2{
 
       text-align:center;
+
       font-size:58px;
+
       margin-bottom:15px;
+
       color:#ffe6c7;
     }
 
     .reviews p{
 
       text-align:center;
+
       color:rgba(255,255,255,0.82);
 
       margin-bottom:55px;
+
       font-size:17px;
     }
 
     /* ================= REVIEW FORM ================= */
 
     .review-form{
+
+      width:100%;
 
       background:linear-gradient(
       135deg,
@@ -204,51 +290,8 @@
 
       box-shadow:0 12px 40px rgba(0,0,0,0.4);
 
-      position:relative;
       overflow:hidden;
     }
-
-    /* FORM GLOW */
-
-    .review-form::before{
-
-      content:'';
-
-      position:absolute;
-
-      width:220px;
-      height:220px;
-
-      background:rgba(255,183,77,0.15);
-
-      border-radius:50%;
-
-      top:-100px;
-      right:-60px;
-
-      filter:blur(30px);
-    }
-
-    .review-form::after{
-
-      content:'';
-
-      position:absolute;
-
-      width:180px;
-      height:180px;
-
-      background:rgba(255,94,98,0.15);
-
-      border-radius:50%;
-
-      bottom:-80px;
-      left:-60px;
-
-      filter:blur(30px);
-    }
-
-    /* ================= INPUTS ================= */
 
     .review-form input,
     .review-form textarea,
@@ -272,14 +315,12 @@
 
       font-size:15px;
 
-      position:relative;
-      z-index:2;
-
       transition:0.3s;
     }
 
     .review-form input::placeholder,
     .review-form textarea::placeholder{
+
       color:rgba(255,255,255,0.65);
     }
 
@@ -300,8 +341,6 @@
       border:2px solid #ffb347;
 
       box-shadow:0 0 18px rgba(255,183,77,0.45);
-
-      transform:scale(1.01);
     }
 
     /* ================= BUTTON ================= */
@@ -325,21 +364,19 @@
       color:white;
 
       font-size:16px;
+
       font-weight:600;
 
       cursor:pointer;
 
       transition:0.4s;
-
-      position:relative;
-      z-index:2;
     }
 
     .review-form button:hover{
 
       transform:translateY(-4px);
 
-      box-shadow:0 6px 6px rgba(255,94,98,0.45);
+      box-shadow:0 6px 20px rgba(255,94,98,0.45);
     }
 
     /* ================= REVIEW GRID ================= */
@@ -382,6 +419,7 @@
     .review-card img{
 
       width:90px;
+
       height:90px;
 
       border-radius:50%;
@@ -389,6 +427,7 @@
       object-fit:cover;
 
       margin:auto;
+
       margin-bottom:20px;
 
       border:4px solid rgba(255,183,77,0.4);
@@ -397,6 +436,7 @@
     .review-card h3{
 
       font-size:24px;
+
       margin-bottom:10px;
 
       color:#ffe0b8;
@@ -405,7 +445,9 @@
     .stars{
 
       font-size:22px;
+
       margin-bottom:15px;
+
       color:#ffd700;
     }
 
@@ -414,7 +456,22 @@
       color:rgba(255,255,255,0.82);
 
       line-height:1.8;
+
       font-size:15px;
+    }
+
+    /* ================= TABLET ================= */
+
+    @media(max-width:992px){
+
+      .reviews h2{
+        font-size:46px;
+      }
+
+      .review-form{
+        padding:30px;
+      }
+
     }
 
     /* ================= MOBILE ================= */
@@ -422,253 +479,401 @@
     @media(max-width:768px){
 
       body{
-        padding:18px 12px;
-        background-attachment:scroll;
+        padding:10px;
+      }
+
+      .main-wrapper{
+        padding:10px;
       }
 
       .navbar{
 
-        padding:15px 20px;
-        border-radius:16px;
+        padding:15px 18px;
+
+        position:relative;
       }
 
       .logo{
-        font-size:22px;
+        font-size:24px;
       }
 
+      /* SHOW TOGGLE ONLY MOBILE */
+
+      .menu-toggle{
+        display:flex;
+      }
+
+      /* MOBILE MENU */
+
       .nav-links{
-        gap:15px;
+
+        position:absolute;
+
+        top:80px;
+        right:0;
+
+        width:220px;
+
+        background:rgba(0,0,0,0.92);
+
+        backdrop-filter:blur(18px);
+
+        border:1px solid rgba(255,255,255,0.1);
+
+        border-radius:18px;
+
+        padding:22px;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:22px;
+
+        opacity:0;
+
+        visibility:hidden;
+
+        transform:translateY(-20px);
+
+        transition:0.4s;
+      }
+
+      .nav-links.active{
+
+        opacity:1;
+
+        visibility:visible;
+
+        transform:translateY(0);
       }
 
       .nav-links a{
-        font-size:14px;
+        font-size:16px;
       }
 
       .reviews{
-        margin-top:40px;
+
+        margin-top:35px;
       }
 
       .reviews h2{
-        font-size:38px;
+
+        font-size:34px;
+
+        line-height:1.3;
       }
 
       .reviews p{
+
         font-size:15px;
+
         margin-bottom:35px;
       }
 
       .review-form{
-        padding:22px;
+
+        padding:20px;
+
         border-radius:22px;
       }
 
+      .review-form input,
+      .review-form textarea,
+      .review-form select{
+
+        padding:14px;
+
+        font-size:14px;
+      }
+
+      .review-form button{
+
+        padding:14px;
+
+        font-size:15px;
+      }
+
       .review-container{
+
         grid-template-columns:1fr;
-        gap:22px;
+
+        gap:20px;
       }
 
       .review-card{
-        padding:22px;
-      }
 
-      .review-card img{
-        width:75px;
-        height:75px;
+        padding:22px;
+
+        border-radius:22px;
       }
 
       .review-card h3{
-        font-size:21px;
+        font-size:20px;
       }
 
       .stars{
-        font-size:18px;
+        font-size:20px;
+      }
+
+      .review-card span{
+        font-size:14px;
       }
 
       .circle1{
-        width:150px;
-        height:150px;
+
+        width:180px;
+        height:180px;
+
+        left:-60px;
       }
 
       .circle2{
-        width:170px;
-        height:170px;
+
+        width:200px;
+        height:200px;
+
+        right:-60px;
       }
 
     }
 
+    /* ================= SMALL MOBILE ================= */
+
     @media(max-width:480px){
 
       .navbar{
-        flex-direction:column;
-        gap:15px;
+        padding:14px;
+      }
+
+      .logo{
+        font-size:20px;
       }
 
       .nav-links{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:12px;
+
+        width:190px;
+
+        padding:18px;
       }
 
       .reviews h2{
-        font-size:30px;
+        font-size:28px;
+      }
+
+      .reviews p{
+        font-size:14px;
       }
 
       .review-form{
         padding:18px;
       }
 
+      .review-card img{
+
+        width:75px;
+        height:75px;
+      }
+
+    }
+
+    /* ================= HIDE TOGGLE IN DESKTOP ================= */
+
+    @media(min-width:769px){
+
+      .menu-toggle{
+        display:none;
+      }
+
+      .nav-links{
+
+        position:static;
+
+        width:auto;
+
+        background:none;
+
+        padding:0;
+
+        opacity:1;
+
+        visibility:visible;
+
+        transform:none;
+
+        flex-direction:row;
+      }
+
     }
 
   </style>
+
 </head>
 
 <body>
 
   <!-- Glow -->
+
   <div class="circle circle1"></div>
   <div class="circle circle2"></div>
 
-  <!-- Navbar -->
+  <!-- Main Wrapper -->
 
-  <header>
+  <div class="main-wrapper">
 
-    <nav class="navbar">
+    <!-- Navbar -->
 
-      <div class="logo">
-        ☕ Fresh Coffee
-      </div>
+    <header>
 
-      <ul class="nav-links">
+      <nav class="navbar">
 
-        <li><a href="index.html">Home</a></li>
+        <div class="logo">
+          ☕ Fresh Coffee
+        </div>
 
-        <li><a href="menu.html">Menu</a></li>
+        <!-- Toggle -->
 
-        <li><a href="about.html">About</a></li>
+        <div class="menu-toggle" id="menuToggle">
 
-        <li><a href="contact.html">Contact</a></li>
+          <span></span>
+          <span></span>
+          <span></span>
 
-        <li><a href="review.html">Review</a></li>
+        </div>
 
-      </ul>
+        <!-- Nav Links -->
 
-    </nav>
+        <ul class="nav-links" id="navLinks">
 
-  </header>
+          <li><a href="index.html">Home</a></li>
 
-  <!-- Reviews Section -->
+          <li><a href="menu.html">Menu</a></li>
 
-  <section class="reviews">
+          <li><a href="about.html">About</a></li>
 
-    <h2>
-      Customer Reviews 💬
-    </h2>
+          <li><a href="contact.html">Contact</a></li>
 
-    <p>
-      What our coffee lovers say about us
-    </p>
+          <li><a href="review.html">Review</a></li>
 
-    <!-- Review Form -->
+        </ul>
 
-    <form class="review-form" id="reviewForm">
+      </nav>
 
-      <input type="text" id="name" placeholder="Enter Your Name" required>
+    </header>
 
-      <textarea id="message" rows="4" placeholder="Write Your Review" required></textarea>
+    <!-- Reviews -->
 
-      <select id="rating" required>
+    <section class="reviews">
 
-        <option value="">Select Rating</option>
+      <h2>
+        Customer Reviews 💬
+      </h2>
 
-        <option value="⭐">⭐</option>
+      <p>
+        What our coffee lovers say about us
+      </p>
 
-        <option value="⭐⭐">⭐⭐</option>
+      <!-- Review Form -->
 
-        <option value="⭐⭐⭐">⭐⭐⭐</option>
+      <form class="review-form" id="reviewForm">
 
-        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+        <input type="text" id="name" placeholder="Enter Your Name" required>
 
-        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+        <textarea id="message" rows="4" placeholder="Write Your Review" required></textarea>
 
-      </select>
+        <select id="rating" required>
 
-      <button type="submit">
-        Submit Review
-      </button>
+          <option value="">Select Rating</option>
 
-    </form>
+          <option value="⭐">⭐</option>
 
-    <!-- Review Cards -->
+          <option value="⭐⭐">⭐⭐</option>
 
-    <div class="review-container" id="reviewContainer">
+          <option value="⭐⭐⭐">⭐⭐⭐</option>
 
-      <div class="review-card">
+          <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
 
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+          <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
 
-        <h3>Sarah</h3>
+        </select>
 
-        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <button type="submit">
+          Submit Review
+        </button>
 
-        <span>
-          Best coffee ever! Amazing atmosphere and delicious drinks.
-        </span>
+      </form>
 
-      </div>
+      <!-- Review Cards -->
 
-      <div class="review-card">
+      <div class="review-container" id="reviewContainer">
 
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+        <div class="review-card">
 
-        <h3>John</h3>
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
 
-        <div class="stars">⭐⭐⭐⭐⭐</div>
+          <h3>Sarah</h3>
 
-        <span>
-          Friendly staff and excellent coffee quality.
-        </span>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
 
-      </div>
+          <span>
+            Best coffee ever! Amazing atmosphere and delicious drinks.
+          </span>
 
-      <div class="review-card">
-
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
-
-        <h3>Emma</h3>
-
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-
-        <span>
-          Beautiful ambience and delicious cold coffee.
-        </span>
+        </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </div>
 
   <script>
 
-    const reviewForm = document.getElementById('reviewForm');
+    /* ================= TOGGLE MENU ================= */
 
-    const reviewContainer = document.getElementById('reviewContainer');
+    const menuToggle =
+    document.getElementById("menuToggle");
+
+    const navLinks =
+    document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click",()=>{
+
+      menuToggle.classList.toggle("active");
+
+      navLinks.classList.toggle("active");
+
+    });
+
+    /* ================= REVIEW FORM ================= */
+
+    const reviewForm =
+    document.getElementById('reviewForm');
+
+    const reviewContainer =
+    document.getElementById('reviewContainer');
 
     reviewForm.addEventListener('submit', function(e){
 
       e.preventDefault();
 
-      const name = document.getElementById('name').value;
+      const name =
+      document.getElementById('name').value;
 
-      const message = document.getElementById('message').value;
+      const message =
+      document.getElementById('message').value;
 
-      const rating = document.getElementById('rating').value;
+      const rating =
+      document.getElementById('rating').value;
 
-      const randomNumber = Math.floor(Math.random() * 90);
+      const randomNumber =
+      Math.floor(Math.random() * 90);
 
-      const gender = Math.random() > 0.5 ? "men" : "women";
+      const gender =
+      Math.random() > 0.5 ? "men" : "women";
 
-      const reviewCard = document.createElement('div');
+      const reviewCard =
+      document.createElement('div');
 
       reviewCard.classList.add('review-card');
 

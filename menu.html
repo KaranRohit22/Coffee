@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Premium Coffee Menu</title>
 
 <style>
@@ -16,7 +19,8 @@
   font-family:Arial,sans-serif;
 }
 
-html,body{
+html,
+body{
   width:100%;
   overflow-x:hidden;
 }
@@ -34,7 +38,9 @@ body{
   background-attachment:fixed;
 
   min-height:100vh;
+
   padding:40px 20px;
+
   position:relative;
 }
 
@@ -54,7 +60,9 @@ img{
   padding:18px 8%;
 
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
 
   background:rgba(40,20,10,0.45);
@@ -66,58 +74,141 @@ img{
   border-radius:18px;
 
   position:sticky;
+
   top:10px;
 
   z-index:1000;
 }
 
 .logo{
+
   font-size:32px;
+
   font-weight:bold;
+
   color:#ffe0b2;
 }
 
+/* ================= DESKTOP NAV ================= */
+
 .nav-links{
+
   display:flex;
-  list-style:none;
+
+  align-items:center;
+
   gap:30px;
+
+  list-style:none;
 }
 
 .nav-links a{
+
   text-decoration:none;
+
   color:white;
+
   font-size:18px;
+
   transition:0.3s;
 }
 
 .nav-links a:hover{
+
   color:#ffcc80;
+}
+
+/* ================= TOGGLE BUTTON ================= */
+
+.menu-toggle{
+
+  width:40px;
+
+  height:30px;
+
+  display:none;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  cursor:pointer;
+
+  z-index:1001;
+}
+
+.menu-toggle span{
+
+  width:100%;
+
+  height:4px;
+
+  background:white;
+
+  border-radius:10px;
+
+  transition:0.4s;
+}
+
+/* TOGGLE ANIMATION */
+
+.menu-toggle.active span:nth-child(1){
+
+  transform:rotate(45deg)
+  translate(7px,7px);
+}
+
+.menu-toggle.active span:nth-child(2){
+
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+
+  transform:rotate(-45deg)
+  translate(7px,-7px);
 }
 
 /* ================= BACKGROUND GLOW ================= */
 
 .circle{
+
   position:absolute;
+
   border-radius:50%;
+
   filter:blur(70px);
+
   opacity:0.45;
+
   animation:float 6s infinite alternate ease-in-out;
+
   z-index:0;
 }
 
 .circle1{
+
   width:250px;
+
   height:250px;
+
   background:#ff9800;
+
   top:5%;
+
   left:5%;
 }
 
 .circle2{
+
   width:280px;
+
   height:280px;
+
   background:#ff5722;
+
   bottom:5%;
+
   right:5%;
 }
 
@@ -136,10 +227,13 @@ img{
 /* ================= MENU SECTION ================= */
 
 .menu-section{
+
   position:relative;
+
   z-index:2;
 
   width:100%;
+
   max-width:1200px;
 
   margin:auto;
@@ -154,6 +248,7 @@ img{
   color:#fff3e0;
 
   margin-top:60px;
+
   margin-bottom:45px;
 
   line-height:1.3;
@@ -195,16 +290,21 @@ img{
   box-shadow:0 10px 25px rgba(0,0,0,0.35);
 
   opacity:0;
+
   transform:translateY(40px);
 }
 
 .menu-card.show{
+
   opacity:1;
+
   transform:translateY(0);
 }
 
 .menu-card:hover{
+
   transform:translateY(-10px);
+
   box-shadow:0 14px 30px rgba(0,0,0,0.45);
 }
 
@@ -213,6 +313,7 @@ img{
 .menu-card img{
 
   width:100%;
+
   height:250px;
 
   object-fit:cover;
@@ -221,13 +322,16 @@ img{
 }
 
 .menu-card:hover img{
+
   transform:scale(1.05);
 }
 
 /* ================= CONTENT ================= */
 
 .menu-content{
+
   padding:22px;
+
   text-align:center;
 }
 
@@ -268,6 +372,7 @@ img{
   color:white;
 
   font-size:15px;
+
   font-weight:bold;
 
   cursor:pointer;
@@ -282,78 +387,149 @@ img{
   box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* ================= TABLET VIEW ================= */
+/* ================= MOBILE VIEW ================= */
 
 @media screen and (max-width:768px){
 
   body{
+
     padding:20px 15px;
+
     background-attachment:scroll;
   }
 
   .navbar{
-    flex-direction:column;
-    gap:15px;
-    padding:18px;
+
+    padding:18px 20px;
   }
 
+  .logo{
+
+    font-size:26px;
+  }
+
+  /* SHOW TOGGLE ONLY MOBILE */
+
+  .menu-toggle{
+
+    display:flex;
+  }
+
+  /* MOBILE NAVIGATION */
+
   .nav-links{
-    gap:15px;
-    flex-wrap:wrap;
-    justify-content:center;
+
+    position:absolute;
+
+    top:80px;
+
+    right:20px;
+
+    width:220px;
+
+    background:rgba(25,15,10,0.95);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(-20px);
+
+    transition:0.4s;
+  }
+
+  .nav-links.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0px);
   }
 
   .menu-title{
+
     font-size:36px;
+
     margin-top:40px;
+
     margin-bottom:30px;
   }
 
   .menu-container{
+
     grid-template-columns:1fr;
+
     gap:20px;
   }
 
   .menu-card{
+
     border-radius:20px;
   }
 
   .menu-card img{
+
     height:220px;
   }
 
   .menu-content{
+
     padding:18px;
   }
 
   .menu-content h2{
+
     font-size:24px;
   }
 
   .price{
+
     font-size:18px;
   }
 
   .menu-btn{
+
     font-size:15px;
+
     padding:12px;
   }
 
   .circle1{
+
     width:140px;
+
     height:140px;
+
     left:-20px;
   }
 
   .circle2{
+
     width:160px;
+
     height:160px;
+
     right:-20px;
   }
 
 }
 
-/* ================= MOBILE VIEW ================= */
+/* ================= SMALL MOBILE ================= */
 
 @media screen and (max-width:480px){
 
@@ -362,50 +538,59 @@ img{
   }
 
   .logo{
-    font-size:24px;
+    font-size:22px;
   }
 
   .nav-links{
-    gap:10px;
-  }
 
-  .nav-links a{
-    font-size:15px;
+    width:200px;
+
+    right:10px;
   }
 
   .menu-title{
+
     font-size:28px;
+
     margin-bottom:25px;
   }
 
   .menu-card{
+
     border-radius:18px;
   }
 
   .menu-card img{
+
     height:190px;
   }
 
   .menu-content{
+
     padding:15px;
   }
 
   .menu-content h2{
+
     font-size:21px;
   }
 
   .price{
+
     font-size:16px;
   }
 
   .menu-btn{
+
     font-size:14px;
+
     padding:11px;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -420,7 +605,19 @@ img{
 ☕ Fresh Coffee
 </div>
 
-<ul class="nav-links">
+<!-- TOGGLE BUTTON -->
+
+<div class="menu-toggle" id="menuToggle">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<!-- NAV LINKS -->
+
+<ul class="nav-links" id="navLinks">
 
 <li><a href="index.html">Home</a></li>
 
@@ -441,6 +638,7 @@ img{
 <!-- ================= BACKGROUND GLOW ================= -->
 
 <div class="circle circle1"></div>
+
 <div class="circle circle2"></div>
 
 <!-- ================= MENU SECTION ================= -->
@@ -541,7 +739,10 @@ Order Now
 
 <script>
 
-const cards = document.querySelectorAll('.menu-card');
+/* MENU CARD ANIMATION */
+
+const cards =
+document.querySelectorAll('.menu-card');
 
 window.addEventListener('load', () => {
 
@@ -554,6 +755,22 @@ window.addEventListener('load', () => {
     }, index * 200);
 
   });
+
+});
+
+/* TOGGLE MENU */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+  menuToggle.classList.toggle("active");
+
+  navLinks.classList.toggle("active");
 
 });
 

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Fresh Coffee - Contact</title>
 
   <style>
@@ -14,14 +17,20 @@
       font-family:Arial,sans-serif;
     }
 
+    html,
     body{
-      min-height:100vh;
+      width:100%;
       overflow-x:hidden;
+    }
+
+    body{
+
+      min-height:100vh;
+
       position:relative;
+
       display:flex;
       flex-direction:column;
-
-      /* UNIQUE DARK COFFEE THEME */
 
       background:
       linear-gradient(rgba(20,10,5,0.75),rgba(20,10,5,0.75)),
@@ -30,107 +39,218 @@
       background-size:cover;
       background-position:center;
       background-attachment:fixed;
+
+      color:white;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
     }
 
     /* ================= NAVBAR ================= */
 
     .navbar{
+
       width:100%;
-      padding:20px 8%;
+
+      padding:18px 6%;
+
       display:flex;
+
       justify-content:space-between;
+
       align-items:center;
 
       background:rgba(0,0,0,0.35);
+
       backdrop-filter:blur(12px);
 
       border-bottom:1px solid rgba(255,255,255,0.1);
 
       position:sticky;
+
       top:0;
+
       z-index:1000;
     }
 
     .logo{
+
       font-size:30px;
+
       font-weight:bold;
+
       color:#f8d9b6;
     }
 
+    /* ================= NAV LINKS DESKTOP ================= */
+
     .nav-links{
+
       display:flex;
-      list-style:none;
+
+      align-items:center;
+
       gap:30px;
-      flex-wrap:wrap;
+
+      list-style:none;
     }
 
     .nav-links a{
+
       text-decoration:none;
+
       color:white;
+
       font-size:17px;
-      transition:0.3s;
+
       font-weight:500;
+
+      transition:0.3s;
     }
 
     .nav-links a:hover{
       color:#f8d9b6;
     }
 
+    /* ================= TOGGLE BUTTON ================= */
+
+    .menu-toggle{
+
+      width:40px;
+
+      height:35px;
+
+      display:none;
+
+      flex-direction:column;
+
+      justify-content:space-between;
+
+      cursor:pointer;
+
+      z-index:2000;
+    }
+
+    .menu-toggle span{
+
+      width:100%;
+
+      height:4px;
+
+      background:white;
+
+      border-radius:10px;
+
+      transition:0.4s;
+    }
+
+    /* TOGGLE ANIMATION */
+
+    .menu-toggle.active span:nth-child(1){
+
+      transform:
+      rotate(45deg)
+      translate(8px,8px);
+    }
+
+    .menu-toggle.active span:nth-child(2){
+
+      opacity:0;
+    }
+
+    .menu-toggle.active span:nth-child(3){
+
+      transform:
+      rotate(-45deg)
+      translate(7px,-7px);
+    }
+
     /* ================= GLOW EFFECT ================= */
 
     .circle{
+
       position:absolute;
+
       border-radius:50%;
+
       filter:blur(80px);
+
       opacity:0.4;
+
       z-index:0;
+
       animation:float 5s infinite alternate ease-in-out;
     }
 
     .circle1{
+
       width:250px;
+
       height:250px;
+
       background:#ff8c42;
+
       top:5%;
+
       left:5%;
     }
 
     .circle2{
+
       width:300px;
+
       height:300px;
+
       background:#c084fc;
+
       bottom:5%;
+
       right:5%;
     }
 
     @keyframes float{
+
       from{
         transform:translateY(0px);
       }
+
       to{
         transform:translateY(30px);
       }
+
     }
 
     /* ================= MAIN CONTENT ================= */
 
     .main-content{
+
       flex:1;
+
       display:flex;
+
       justify-content:center;
+
       align-items:center;
+
       padding:60px 20px;
+
       position:relative;
+
       z-index:2;
     }
 
     /* ================= FORM ================= */
 
     .form-container{
+
       width:100%;
-      max-width:450px;
+
+      max-width:500px;
 
       background:rgba(255,255,255,0.08);
+
       backdrop-filter:blur(14px);
 
       border:1px solid rgba(255,255,255,0.12);
@@ -140,14 +260,16 @@
       padding:35px;
 
       box-shadow:0 10px 40px rgba(0,0,0,0.35);
-
-      color:white;
     }
 
     .form-container h2{
+
       text-align:center;
+
       margin-bottom:25px;
+
       font-size:34px;
+
       color:#ffe0c2;
     }
 
@@ -157,10 +279,13 @@
 
     .input-box input,
     .input-box textarea{
+
       width:100%;
+
       padding:15px;
 
-      border:none;
+      border:2px solid rgba(255,255,255,0.15);
+
       outline:none;
 
       border-radius:14px;
@@ -168,6 +293,7 @@
       background:rgba(255,255,255,0.12);
 
       color:white;
+
       font-size:15px;
 
       transition:0.3s;
@@ -175,12 +301,19 @@
 
     .input-box input:focus,
     .input-box textarea:focus{
+
       background:rgba(255,255,255,0.18);
+
+      border-color:#ffb347;
+
+      box-shadow:0 0 12px rgba(255,179,71,0.4);
+
       transform:scale(1.01);
     }
 
     .input-box input::placeholder,
     .input-box textarea::placeholder{
+
       color:rgba(255,255,255,0.7);
     }
 
@@ -191,10 +324,13 @@
     /* ================= BUTTON ================= */
 
     .submit-btn{
+
       width:100%;
+
       padding:15px;
 
       border:none;
+
       border-radius:14px;
 
       background:linear-gradient(135deg,#ff8c42,#ff4d6d);
@@ -202,32 +338,46 @@
       color:white;
 
       font-size:16px;
+
       font-weight:bold;
 
       cursor:pointer;
+
       transition:0.3s;
     }
 
     .submit-btn:hover{
+
       transform:translateY(-3px);
+
       box-shadow:0 8px 25px rgba(0,0,0,0.4);
     }
 
     .message{
+
       margin-top:15px;
+
       text-align:center;
+
       font-size:14px;
+
       color:#ffe0c2;
+
+      line-height:1.5;
     }
 
     /* ================= FOOTER ================= */
 
     .footer{
+
       width:100%;
+
       padding:18px;
+
       text-align:center;
 
       background:rgba(0,0,0,0.35);
+
       backdrop-filter:blur(12px);
 
       border-top:1px solid rgba(255,255,255,0.1);
@@ -235,10 +385,11 @@
       color:white;
 
       position:relative;
+
       z-index:2;
     }
 
-    /* ================= MOBILE RESPONSIVE ================= */
+    /* ================= MOBILE ================= */
 
     @media(max-width:768px){
 
@@ -247,22 +398,60 @@
       }
 
       .navbar{
-        padding:15px;
-        flex-direction:column;
-        gap:15px;
+
+        padding:15px 20px;
       }
 
       .logo{
-        font-size:26px;
+        font-size:24px;
       }
 
+      /* SHOW TOGGLE ONLY IN MOBILE */
+
+      .menu-toggle{
+        display:flex;
+      }
+
+      /* MOBILE MENU */
+
       .nav-links{
-        gap:18px;
-        justify-content:center;
+
+        position:absolute;
+
+        top:80px;
+
+        left:0;
+
+        width:100%;
+
+        background:rgba(0,0,0,0.92);
+
+        backdrop-filter:blur(12px);
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:20px;
+
+        padding:0;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        transition:0.5s ease;
+      }
+
+      .nav-links.active{
+
+        max-height:500px;
+
+        padding:25px 0;
       }
 
       .nav-links a{
-        font-size:15px;
+        font-size:16px;
       }
 
       .main-content{
@@ -270,7 +459,9 @@
       }
 
       .form-container{
+
         padding:25px 20px;
+
         border-radius:22px;
       }
 
@@ -278,26 +469,21 @@
         font-size:28px;
       }
 
-      .input-box input,
-      .input-box textarea{
-        padding:13px;
-        font-size:14px;
-      }
-
-      .submit-btn{
-        padding:13px;
-        font-size:15px;
-      }
-
       .circle1{
+
         width:150px;
+
         height:150px;
+
         left:-50px;
       }
 
       .circle2{
+
         width:180px;
+
         height:180px;
+
         right:-50px;
       }
 
@@ -307,33 +493,37 @@
 
     @media(max-width:480px){
 
-      .navbar{
-        padding:12px;
-      }
-
       .logo{
         font-size:22px;
-      }
-
-      .nav-links{
-        gap:12px;
-      }
-
-      .nav-links a{
-        font-size:14px;
-      }
-
-      .form-container h2{
-        font-size:24px;
       }
 
       .form-container{
         padding:20px 15px;
       }
 
+      .form-container h2{
+        font-size:24px;
+      }
+
+      .input-box input,
+      .input-box textarea{
+
+        font-size:13px;
+
+        padding:12px;
+      }
+
+      .submit-btn{
+
+        font-size:14px;
+
+        padding:12px;
+      }
+
     }
 
   </style>
+
 </head>
 
 <body>
@@ -341,6 +531,7 @@
   <!-- GLOW -->
 
   <div class="circle circle1"></div>
+
   <div class="circle circle2"></div>
 
   <!-- NAVBAR -->
@@ -349,11 +540,25 @@
 
     <nav class="navbar">
 
+      <!-- Logo -->
+
       <div class="logo">
         ☕ Fresh Coffee
       </div>
 
-      <ul class="nav-links">
+      <!-- Toggle Button -->
+
+      <div class="menu-toggle" id="menuToggle">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+      <!-- Nav Links -->
+
+      <ul class="nav-links" id="navLinks">
 
         <li><a href="index.html">Home</a></li>
 
@@ -382,22 +587,46 @@
       <form id="myForm">
 
         <div class="input-box">
-          <input type="text" id="name" placeholder="Enter your name" required>
+
+          <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required>
+
         </div>
 
         <div class="input-box">
-          <input type="email" id="email" placeholder="Enter your email" required>
+
+          <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required>
+
         </div>
 
         <div class="input-box">
-          <textarea id="message" rows="4" placeholder="Write your message" required></textarea>
+
+          <textarea
+          id="message"
+          rows="4"
+          placeholder="Write your message"
+          required></textarea>
+
         </div>
 
-        <button type="submit" class="submit-btn">
+        <button
+        type="submit"
+        class="submit-btn">
+
           Send Message
+
         </button>
 
-        <div class="message" id="successMessage"></div>
+        <div
+        class="message"
+        id="successMessage"></div>
 
       </form>
 
@@ -413,9 +642,30 @@
 
   </footer>
 
+  <!-- JAVASCRIPT -->
+
   <script>
 
-    const form = document.getElementById('myForm');
+    /* ================= TOGGLE MENU ================= */
+
+    const menuToggle =
+    document.getElementById("menuToggle");
+
+    const navLinks =
+    document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+
+      menuToggle.classList.toggle("active");
+
+      navLinks.classList.toggle("active");
+
+    });
+
+    /* ================= CONTACT FORM ================= */
+
+    const form =
+    document.getElementById('myForm');
 
     const successMessage =
     document.getElementById('successMessage');

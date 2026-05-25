@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Fresh Coffee - About Us</title>
 
 <style>
@@ -14,13 +17,19 @@
   font-family:Arial,sans-serif;
 }
 
+html,
 body{
-  min-height:100vh;
+  width:100%;
   overflow-x:hidden;
-  position:relative;
-  padding:30px 15px;
+}
 
-  /* UNIQUE COFFEE THEME */
+body{
+
+  min-height:100vh;
+
+  position:relative;
+
+  padding:30px 15px;
 
   background:
   linear-gradient(rgba(20,10,5,0.75),rgba(20,10,5,0.75)),
@@ -34,79 +43,166 @@ body{
 /* ================= NAVBAR ================= */
 
 .navbar{
+
   width:100%;
+
   padding:20px 8%;
 
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
-  flex-wrap:wrap;
-  gap:15px;
 
   background:rgba(0,0,0,0.35);
+
   backdrop-filter:blur(12px);
 
   border-radius:20px;
 
   position:relative;
+
   z-index:1000;
 }
 
 .logo{
+
   font-size:30px;
+
   font-weight:bold;
+
   color:#ffe0c2;
 }
 
+/* ================= TOGGLE BUTTON ================= */
+
+.menu-toggle{
+
+  width:40px;
+
+  height:30px;
+
+  display:none;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  cursor:pointer;
+
+  z-index:1001;
+}
+
+.menu-toggle span{
+
+  width:100%;
+
+  height:4px;
+
+  background:white;
+
+  border-radius:10px;
+
+  transition:0.4s;
+}
+
+/* TOGGLE ANIMATION */
+
+.menu-toggle.active span:nth-child(1){
+
+  transform:rotate(45deg)
+  translate(7px,7px);
+}
+
+.menu-toggle.active span:nth-child(2){
+
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+
+  transform:rotate(-45deg)
+  translate(7px,-7px);
+}
+
+/* ================= NAV LINKS DESKTOP ================= */
+
 .nav-links{
+
   display:flex;
+
+  align-items:center;
+
+  gap:30px;
+
   list-style:none;
-  gap:25px;
-  flex-wrap:wrap;
 }
 
 .nav-links a{
+
   text-decoration:none;
+
   color:white;
+
   font-size:17px;
+
   transition:0.3s;
 }
 
 .nav-links a:hover{
+
   color:#ffb26b;
 }
 
 /* ================= BACKGROUND GLOW ================= */
 
 .circle{
+
   position:fixed;
+
   border-radius:50%;
+
   filter:blur(80px);
+
   opacity:0.35;
+
   z-index:0;
+
   animation:float 5s infinite alternate ease-in-out;
 }
 
 .circle1{
+
   width:250px;
+
   height:250px;
+
   background:#ff8c42;
+
   top:10%;
+
   left:5%;
 }
 
 .circle2{
+
   width:300px;
+
   height:300px;
+
   background:#c084fc;
+
   bottom:10%;
+
   right:5%;
 }
 
 @keyframes float{
+
   from{
     transform:translateY(0px);
   }
+
   to{
     transform:translateY(30px);
   }
@@ -115,7 +211,9 @@ body{
 /* ================= ABOUT SECTION ================= */
 
 .about-section{
+
   width:100%;
+
   max-width:1150px;
 
   margin:40px auto;
@@ -133,28 +231,28 @@ body{
   box-shadow:0 10px 40px rgba(0,0,0,0.35);
 
   position:relative;
+
   z-index:2;
 }
 
 /* ================= CONTAINER ================= */
 
 .about-container{
+
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:40px;
+
   align-items:center;
 }
 
 /* ================= IMAGE ================= */
 
-.about-image{
-  width:100%;
-}
-
 .about-image img{
+
   width:100%;
-  height:100%;
-  display:block;
 
   border-radius:22px;
 
@@ -166,32 +264,43 @@ body{
 }
 
 .about-image img:hover{
+
   transform:scale(1.03);
 }
 
 /* ================= CONTENT ================= */
 
 .about-content{
+
   color:white;
 }
 
 .about-content h2{
+
   font-size:48px;
+
   margin-bottom:20px;
+
   color:#ffe0c2;
 }
 
 .about-content p{
+
   font-size:17px;
+
   line-height:1.9;
+
   margin-bottom:20px;
+
   color:rgba(255,255,255,0.85);
 }
 
 .about-btn{
+
   padding:15px 32px;
 
   border:none;
+
   border-radius:14px;
 
   background:linear-gradient(135deg,#ff8c42,#ff4d6d);
@@ -199,6 +308,7 @@ body{
   color:white;
 
   font-size:16px;
+
   font-weight:bold;
 
   cursor:pointer;
@@ -207,20 +317,27 @@ body{
 }
 
 .about-btn:hover{
+
   transform:translateY(-3px);
+
   box-shadow:0 8px 25px rgba(0,0,0,0.35);
 }
 
 /* ================= ANIMATION ================= */
 
 .hidden{
+
   opacity:0;
+
   transform:translateY(40px);
+
   transition:1s ease;
 }
 
 .show{
+
   opacity:1;
+
   transform:translateY(0);
 }
 
@@ -251,33 +368,79 @@ body{
 @media(max-width:768px){
 
   body{
+
     padding:15px 10px;
+
     background-attachment:scroll;
   }
 
   .navbar{
-    padding:15px;
-    justify-content:center;
-    text-align:center;
+
+    padding:15px 20px;
   }
 
   .logo{
-    width:100%;
-    font-size:26px;
+    font-size:24px;
   }
+
+  /* SHOW TOGGLE ONLY MOBILE */
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  /* MOBILE NAVIGATION */
 
   .nav-links{
-    justify-content:center;
-    gap:15px;
+
+    position:absolute;
+
+    top:80px;
+
+    right:20px;
+
+    width:220px;
+
+    background:rgba(0,0,0,0.92);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(-20px);
+
+    transition:0.4s;
   }
 
-  .nav-links a{
-    font-size:15px;
+  .nav-links.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0px);
   }
 
   .about-section{
-    margin-top:25px;
+
+    margin-top:50px;
+
     padding:25px 18px;
+
     border-radius:22px;
   }
 
@@ -290,13 +453,18 @@ body{
   }
 
   .about-content p{
+
     font-size:15px;
+
     line-height:1.7;
   }
 
   .about-btn{
+
     width:100%;
+
     padding:13px;
+
     font-size:15px;
   }
 
@@ -304,17 +472,21 @@ body{
     border-radius:18px;
   }
 
-  /* Glow Smaller */
-
   .circle1{
+
     width:150px;
+
     height:150px;
+
     left:-50px;
   }
 
   .circle2{
+
     width:180px;
+
     height:180px;
+
     right:-50px;
   }
 
@@ -329,11 +501,10 @@ body{
   }
 
   .nav-links{
-    gap:10px;
-  }
 
-  .nav-links a{
-    font-size:14px;
+    width:200px;
+
+    right:10px;
   }
 
   .about-content h2{
@@ -347,6 +518,7 @@ body{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -361,7 +533,19 @@ body{
       ☕ Fresh Coffee
     </div>
 
-    <ul class="nav-links">
+    <!-- TOGGLE BUTTON -->
+
+    <div class="menu-toggle" id="menuToggle">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </div>
+
+    <!-- NAV LINKS -->
+
+    <ul class="nav-links" id="navLinks">
 
       <li><a href="index.html">Home</a></li>
 
@@ -382,6 +566,7 @@ body{
 <!-- GLOW -->
 
 <div class="circle circle1"></div>
+
 <div class="circle circle2"></div>
 
 <!-- ABOUT SECTION -->
@@ -423,11 +608,30 @@ body{
 
 <script>
 
-const hiddenElement = document.querySelector('.hidden');
+/* PAGE ANIMATION */
+
+const hiddenElement =
+document.querySelector('.hidden');
 
 window.addEventListener('load', () => {
 
   hiddenElement.classList.add('show');
+
+});
+
+/* TOGGLE MENU */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+  menuToggle.classList.toggle("active");
+
+  navLinks.classList.toggle("active");
 
 });
 
