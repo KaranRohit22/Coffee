@@ -4,7 +4,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Premium Coffee Menu</title>
 
@@ -30,8 +31,9 @@ body{
 body{
 
   background:
-  linear-gradient(rgba(15,10,5,0.78), rgba(15,10,5,0.78)),
-  url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop');
+  linear-gradient(rgba(15,10,5,0.78),
+  rgba(15,10,5,0.78)),
+  url("back.jpg");
 
   background-size:cover;
   background-position:center;
@@ -88,7 +90,7 @@ img{
   color:#ffe0b2;
 }
 
-/* ================= DESKTOP NAV ================= */
+/* ================= NAV LINKS ================= */
 
 .nav-links{
 
@@ -117,13 +119,13 @@ img{
   color:#ffcc80;
 }
 
-/* ================= TOGGLE BUTTON ================= */
+/* ================= TOGGLE ================= */
 
 .menu-toggle{
 
-  width:40px;
+  width:30px;
 
-  height:30px;
+  height:20px;
 
   display:none;
 
@@ -132,8 +134,6 @@ img{
   justify-content:space-between;
 
   cursor:pointer;
-
-  z-index:1001;
 }
 
 .menu-toggle span{
@@ -148,8 +148,6 @@ img{
 
   transition:0.4s;
 }
-
-/* TOGGLE ANIMATION */
 
 .menu-toggle.active span:nth-child(1){
 
@@ -168,7 +166,7 @@ img{
   translate(7px,-7px);
 }
 
-/* ================= BACKGROUND GLOW ================= */
+/* ================= GLOW ================= */
 
 .circle{
 
@@ -223,7 +221,7 @@ img{
 
 }
 
-/* ================= MENU SECTION ================= */
+/* ================= SECTION ================= */
 
 .menu-section{
 
@@ -246,29 +244,24 @@ img{
 
   color:#fff3e0;
 
-  margin-top:60px;
+  margin-top:80px;
 
   margin-bottom:45px;
-
-  line-height:1.3;
-
-  text-shadow:0 5px 15px rgba(0,0,0,0.4);
 }
 
-/* ================= MENU GRID ================= */
+/* ================= GRID ================= */
 
 .menu-container{
 
-  width:100%;
-
   display:grid;
 
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  grid-template-columns:
+  repeat(auto-fit,minmax(240px,1fr));
 
   gap:30px;
 }
 
-/* ================= MENU CARD ================= */
+/* ================= CARD ================= */
 
 .menu-card{
 
@@ -304,20 +297,15 @@ img{
 
   transform:translateY(-10px);
 
-  box-shadow:0 14px 30px rgba(0,0,0,0.45);
+  box-shadow:0 14px 30px
+  rgba(0,0,0,0.45);
 }
 
-/* ================= IMAGE ================= */
-
 .menu-card img{
-
-  width:100%;
 
   height:250px;
 
   object-fit:cover;
-
-  transition:0.4s;
 }
 
 .menu-card:hover img{
@@ -366,7 +354,11 @@ img{
 
   border-radius:14px;
 
-  background:linear-gradient(135deg,#8b4513,#d2691e);
+  background:linear-gradient(
+  135deg,
+  #8b4513,
+  #d2691e
+  );
 
   color:white;
 
@@ -382,39 +374,112 @@ img{
 .menu-btn:hover{
 
   transform:scale(1.03);
-
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* ================= MOBILE VIEW ================= */
+/* ================= QUANTITY ================= */
 
-@media screen and (max-width:768px){
+.cart-controls{
 
-  body{
+  width:100%;
+}
 
-    padding:20px 15px;
+.qty-control{
 
-    background-attachment:scroll;
-  }
+  display:none;
 
-  .navbar{
+  align-items:center;
 
-    padding:18px 20px;
-  }
+  justify-content:center;
 
-  .logo{
+  gap:15px;
 
-    font-size:26px;
-  }
+  margin-top:10px;
 
-  /* SHOW TOGGLE ONLY MOBILE */
+  background:rgba(255,255,255,0.08);
+
+  padding:10px;
+
+  border-radius:14px;
+}
+
+.qty-control button{
+
+  width:35px;
+
+  height:35px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:#ffb347;
+
+  color:white;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.qty-control button:hover{
+
+  transform:scale(1.1);
+}
+
+.qty-control span{
+
+  font-size:20px;
+
+  font-weight:bold;
+
+  color:#fff;
+}
+
+/* ================= POPUP ================= */
+
+#popup{
+
+  position:fixed;
+
+  top:100px;
+
+  right:-400px;
+
+  background:linear-gradient(
+  135deg,
+  #ffb347,
+  #ff5e62
+  );
+
+  color:white;
+
+  padding:18px 30px;
+
+  border-radius:16px;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  z-index:9999;
+
+  transition:0.5s;
+}
+
+#popup.show{
+
+  right:30px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
 
   .menu-toggle{
-
     display:flex;
   }
-
-  /* MOBILE NAVIGATION */
 
   .nav-links{
 
@@ -427,10 +492,6 @@ img{
     width:220px;
 
     background:rgba(25,15,10,0.95);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,0.08);
 
     border-radius:20px;
 
@@ -462,129 +523,12 @@ img{
 
   .menu-title{
 
-    font-size:36px;
-
-    margin-top:40px;
-
-    margin-bottom:30px;
+    font-size:35px;
   }
 
   .menu-container{
 
     grid-template-columns:1fr;
-
-    gap:20px;
-  }
-
-  .menu-card{
-
-    border-radius:20px;
-  }
-
-  .menu-card img{
-
-    height:220px;
-  }
-
-  .menu-content{
-
-    padding:18px;
-  }
-
-  .menu-content h2{
-
-    font-size:24px;
-  }
-
-  .price{
-
-    font-size:18px;
-  }
-
-  .menu-btn{
-
-    font-size:15px;
-
-    padding:12px;
-  }
-
-  .circle1{
-
-    width:140px;
-
-    height:140px;
-
-    left:-20px;
-  }
-
-  .circle2{
-
-    width:160px;
-
-    height:160px;
-
-    right:-20px;
-  }
-
-}
-
-/* ================= SMALL MOBILE ================= */
-
-@media screen and (max-width:480px){
-
-  body{
-    padding:15px 10px;
-  }
-
-  .logo{
-    font-size:22px;
-  }
-
-  .nav-links{
-
-    width:200px;
-
-    right:10px;
-  }
-
-  .menu-title{
-
-    font-size:28px;
-    margin-top: 70px;
-
-    margin-bottom:25px;
-  }
-
-  .menu-card{
-
-    border-radius:18px;
-  }
-
-  .menu-card img{
-
-    height:190px;
-  }
-
-  .menu-content{
-
-    padding:15px;
-  }
-
-  .menu-content h2{
-
-    font-size:21px;
-  }
-
-  .price{
-
-    font-size:16px;
-  }
-
-  .menu-btn{
-
-    font-size:14px;
-
-    padding:11px;
   }
 
 }
@@ -595,8 +539,6 @@ img{
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
 <header>
 
 <nav class="navbar">
@@ -605,9 +547,8 @@ img{
 ☕ Fresh Coffee
 </div>
 
-<!-- TOGGLE BUTTON -->
-
-<div class="menu-toggle" id="menuToggle">
+<div class="menu-toggle"
+id="menuToggle">
 
 <span></span>
 <span></span>
@@ -615,19 +556,26 @@ img{
 
 </div>
 
-<!-- NAV LINKS -->
+<ul class="nav-links"
+id="navLinks">
 
-<ul class="nav-links" id="navLinks">
+<li><a href="#">Home</a></li>
 
-<li><a href="index.html">Home</a></li>
+<li><a href="#">Menu</a></li>
 
-<li><a href="menu.html">Menu</a></li>
+<li><a href="#">About</a></li>
 
-<li><a href="about.html">About</a></li>
+<li><a href="#">Contact</a></li>
 
-<li><a href="contact.html">Contact</a></li>
+<li><a href="#">Review</a></li>
 
-<li><a href="review.html">Review</a></li>
+<li>
+<a href="cart.html">
+
+Cart (<span id="cartCount">0</span>)
+
+</a>
+</li>
 
 </ul>
 
@@ -635,13 +583,9 @@ img{
 
 </header>
 
-<!-- ================= BACKGROUND GLOW ================= -->
-
 <div class="circle circle1"></div>
 
 <div class="circle circle2"></div>
-
-<!-- ================= MENU SECTION ================= -->
 
 <section class="menu-section">
 
@@ -655,7 +599,7 @@ Our Coffee Menu ☕
 
 <div class="menu-card">
 
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" alt="Cappuccino">
+<img src="cap.jpg">
 
 <div class="menu-content">
 
@@ -663,9 +607,45 @@ Our Coffee Menu ☕
 
 <span class="price">$5.00</span>
 
-<button class="menu-btn">
+<div class="cart-controls">
+
+<button class="menu-btn"
+id="btn-Cappuccino"
+
+onclick="addToCart(
+'Cappuccino',
+5,
+'cap.jpg'
+)">
+
 Order Now
+
 </button>
+
+<div class="qty-control"
+id="qty-Cappuccino">
+
+<button onclick="decreaseQty('Cappuccino')">
+
+-
+
+</button>
+
+<span id="count-Cappuccino">
+
+1
+
+</span>
+
+<button onclick="increaseQty('Cappuccino')">
+
++
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -675,7 +655,7 @@ Order Now
 
 <div class="menu-card">
 
-<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Espresso">
+<img src="espresso.jpg">
 
 <div class="menu-content">
 
@@ -683,9 +663,45 @@ Order Now
 
 <span class="price">$4.00</span>
 
-<button class="menu-btn">
+<div class="cart-controls">
+
+<button class="menu-btn"
+id="btn-Espresso"
+
+onclick="addToCart(
+'Espresso',
+4,
+'espresso.jpg'
+)">
+
 Order Now
+
 </button>
+
+<div class="qty-control"
+id="qty-Espresso">
+
+<button onclick="decreaseQty('Espresso')">
+
+-
+
+</button>
+
+<span id="count-Espresso">
+
+1
+
+</span>
+
+<button onclick="increaseQty('Espresso')">
+
++
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -695,7 +711,7 @@ Order Now
 
 <div class="menu-card">
 
-<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop" alt="Latte">
+<img src="latte.jpg">
 
 <div class="menu-content">
 
@@ -703,9 +719,45 @@ Order Now
 
 <span class="price">$6.00</span>
 
-<button class="menu-btn">
+<div class="cart-controls">
+
+<button class="menu-btn"
+id="btn-Latte"
+
+onclick="addToCart(
+'Latte',
+6,
+'latte.jpg'
+)">
+
 Order Now
+
 </button>
+
+<div class="qty-control"
+id="qty-Latte">
+
+<button onclick="decreaseQty('Latte')">
+
+-
+
+</button>
+
+<span id="count-Latte">
+
+1
+
+</span>
+
+<button onclick="increaseQty('Latte')">
+
++
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -715,7 +767,7 @@ Order Now
 
 <div class="menu-card">
 
-<img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1200&auto=format&fit=crop" alt="Cold Coffee">
+<img src="cc.jpg">
 
 <div class="menu-content">
 
@@ -723,9 +775,45 @@ Order Now
 
 <span class="price">$7.00</span>
 
-<button class="menu-btn">
+<div class="cart-controls">
+
+<button class="menu-btn"
+id="btn-Cold Coffee"
+
+onclick="addToCart(
+'Cold Coffee',
+7,
+'cc.jpg'
+)">
+
 Order Now
+
 </button>
+
+<div class="qty-control"
+id="qty-Cold Coffee">
+
+<button onclick="decreaseQty('Cold Coffee')">
+
+-
+
+</button>
+
+<span id="count-Cold Coffee">
+
+1
+
+</span>
+
+<button onclick="increaseQty('Cold Coffee')">
+
++
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -735,20 +823,24 @@ Order Now
 
 </section>
 
-<!-- ================= JAVASCRIPT ================= -->
+<div id="popup">
+
+🎉 Added to Cart ☕
+
+</div>
 
 <script>
 
-/* MENU CARD ANIMATION */
+/* ================= CARD ANIMATION ================= */
 
 const cards =
 document.querySelectorAll('.menu-card');
 
-window.addEventListener('load', () => {
+window.addEventListener('load',()=>{
 
-  cards.forEach((card,index) => {
+  cards.forEach((card,index)=>{
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
       card.classList.add('show');
 
@@ -758,7 +850,7 @@ window.addEventListener('load', () => {
 
 });
 
-/* TOGGLE MENU */
+/* ================= MOBILE MENU ================= */
 
 const menuToggle =
 document.getElementById("menuToggle");
@@ -771,6 +863,209 @@ menuToggle.addEventListener("click",()=>{
   menuToggle.classList.toggle("active");
 
   navLinks.classList.toggle("active");
+
+});
+
+/* ================= ADD TO CART ================= */
+
+function addToCart(name,price,image){
+
+  let cart =
+  JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existingItem =
+  cart.find(item => item.name === name);
+
+  if(existingItem){
+
+    existingItem.quantity += 1;
+
+  }
+
+  else{
+
+    cart.push({
+
+      name:name,
+
+      price:price,
+
+      image:image,
+
+      quantity:1
+
+    });
+
+  }
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  updateCartCount();
+
+  document.getElementById(
+  "btn-" + name
+  ).style.display = "none";
+
+  document.getElementById(
+  "qty-" + name
+  ).style.display = "flex";
+
+  document.getElementById(
+  "count-" + name
+  ).innerText = getQuantity(name);
+
+  const popup =
+  document.getElementById("popup");
+
+  popup.innerHTML =
+  `🎉 ${name} added to cart ☕`;
+
+  popup.classList.add("show");
+
+  setTimeout(()=>{
+
+    popup.classList.remove("show");
+
+  },2000);
+
+}
+
+/* ================= INCREASE ================= */
+
+function increaseQty(name){
+
+  let cart =
+  JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item =
+  cart.find(item => item.name === name);
+
+  item.quantity++;
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  document.getElementById(
+  "count-" + name
+  ).innerText = item.quantity;
+
+  updateCartCount();
+
+}
+
+/* ================= DECREASE ================= */
+
+function decreaseQty(name){
+
+  let cart =
+  JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item =
+  cart.find(item => item.name === name);
+
+  if(item.quantity > 1){
+
+    item.quantity--;
+
+    document.getElementById(
+    "count-" + name
+    ).innerText = item.quantity;
+
+  }
+
+  else{
+
+    cart =
+    cart.filter(
+    i => i.name !== name
+    );
+
+    document.getElementById(
+    "btn-" + name
+    ).style.display = "block";
+
+    document.getElementById(
+    "qty-" + name
+    ).style.display = "none";
+  }
+
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
+
+  updateCartCount();
+
+}
+
+/* ================= GET QUANTITY ================= */
+
+function getQuantity(name){
+
+  let cart =
+  JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item =
+  cart.find(item => item.name === name);
+
+  return item ? item.quantity : 1;
+
+}
+
+/* ================= CART COUNT ================= */
+
+function updateCartCount(){
+
+  let cart =
+  JSON.parse(localStorage.getItem("cart")) || [];
+
+  document.getElementById("cartCount")
+  .innerText = cart.length;
+
+}
+
+/* ================= PAGE LOAD ================= */
+
+window.addEventListener("load",()=>{
+
+  updateCartCount();
+
+  let cart =
+  JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.forEach(item=>{
+
+    const btn =
+    document.getElementById(
+    "btn-" + item.name
+    );
+
+    const qty =
+    document.getElementById(
+    "qty-" + item.name
+    );
+
+    const count =
+    document.getElementById(
+    "count-" + item.name
+    );
+
+    if(btn && qty && count){
+
+      btn.style.display = "none";
+
+      qty.style.display = "flex";
+
+      count.innerText = item.quantity;
+
+    }
+
+  });
 
 });
 

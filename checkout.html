@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Checkout Page</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+
+  background:
+  linear-gradient(rgba(20,10,5,0.75),
+  rgba(20,10,5,0.75)),
+  url("back.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+
+  color:white;
+
+  min-height:100vh;
+
+  padding:30px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+  width:100%;
+
+  padding:20px 8%;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  z-index:1000;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+
+  font-size:30px;
+
+  font-weight:bold;
+
+  color:#ffd59e;
+}
+
+/* ================= CHECKOUT BOX ================= */
+
+.checkout-box{
+
+  max-width:900px;
+
+  margin:130px auto 40px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  padding:30px;
+
+  border-radius:25px;
+}
+
+.checkout-title{
+
+  text-align:center;
+
+  font-size:42px;
+
+  color:#ffcc80;
+
+  margin-bottom:30px;
+}
+
+/* ================= ORDER ITEM ================= */
+
+.order-item{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+
+  padding:18px;
+
+  margin-bottom:18px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.08);
+}
+
+.order-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+}
+
+.order-img{
+
+  width:90px;
+
+  height:90px;
+
+  object-fit:cover;
+
+  border-radius:15px;
+}
+
+.order-info h3{
+
+  font-size:24px;
+
+  margin-bottom:8px;
+}
+
+.order-info p{
+
+  color:#ddd;
+
+  margin-bottom:5px;
+}
+
+.order-price{
+
+  color:#ffcc80;
+
+  font-size:22px;
+
+  font-weight:bold;
+}
+
+/* ================= DELIVERY BOX ================= */
+
+.delivery-box{
+
+  margin-top:30px;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:25px;
+
+  border-radius:18px;
+
+  text-align:center;
+}
+
+.delivery-box h2{
+
+  color:#ffcc80;
+
+  margin-bottom:15px;
+
+  font-size:30px;
+}
+
+.delivery-box p{
+
+  font-size:18px;
+
+  color:#eee;
+
+  margin-bottom:10px;
+}
+
+/* ================= TOTAL ================= */
+
+.total{
+
+  margin-top:30px;
+
+  text-align:right;
+
+  font-size:32px;
+
+  color:#ffb347;
+
+  font-weight:bold;
+}
+
+/* ================= BUTTON ================= */
+
+.place-btn{
+
+  width:100%;
+
+  margin-top:35px;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:linear-gradient(
+  135deg,
+  #ffb347,
+  #ff5e62
+  );
+
+  color:white;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  transition:0.4s;
+}
+
+.place-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 0 20px rgba(255,179,71,0.5);
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+
+  text-align:center;
+
+  padding:50px 20px;
+}
+
+.empty h2{
+
+  font-size:35px;
+
+  margin-bottom:15px;
+}
+
+/* ================= CONFETTI ================= */
+
+.confetti{
+
+  position:fixed;
+
+  width:12px;
+
+  height:12px;
+
+  top:-20px;
+
+  z-index:9999;
+
+  border-radius:50%;
+
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+  to{
+
+    transform:
+    translateY(110vh)
+    rotate(720deg);
+
+    opacity:0;
+  }
+
+}
+
+/* ================= SUCCESS MESSAGE ================= */
+
+.success-message{
+
+  position:fixed;
+
+  top:50%;
+
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  background:linear-gradient(
+  135deg,
+  #ffb347,
+  #ff5e62
+  );
+
+  color:white;
+
+  padding:22px 40px;
+
+  border-radius:18px;
+
+  font-size:28px;
+
+  font-weight:bold;
+
+  z-index:10000;
+
+  box-shadow:
+  0 0 30px rgba(255,179,71,0.6);
+
+  animation:zoomIn 0.5s ease;
+}
+
+@keyframes zoomIn{
+
+  from{
+
+    transform:
+    translate(-50%,-50%)
+    scale(0.5);
+
+    opacity:0;
+  }
+
+  to{
+
+    transform:
+    translate(-50%,-50%)
+    scale(1);
+
+    opacity:1;
+  }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  .order-item{
+
+    flex-direction:column;
+
+    text-align:center;
+  }
+
+  .order-left{
+
+    flex-direction:column;
+  }
+
+  .checkout-title{
+
+    font-size:34px;
+  }
+
+  .total{
+
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+<div class="logo">
+☕ Fresh Coffee
+</div>
+
+</nav>
+
+<!-- ================= CHECKOUT ================= -->
+
+<div class="checkout-box">
+
+<h1 class="checkout-title">
+
+📦 Order Details
+
+</h1>
+
+<div id="orderList"></div>
+
+<!-- DELIVERY INFO -->
+
+<div class="delivery-box">
+
+<h2>
+🚚 Delivery Information
+</h2>
+
+<p>
+Your delicious coffee is being prepared ☕
+</p>
+
+<p>
+Estimated Delivery Time :
+<b>20 - 30 Minutes</b>
+</p>
+
+<p>
+Fresh & Hot Coffee will arrive soon ❤️
+</p>
+
+</div>
+
+<!-- TOTAL -->
+
+<div class="total"
+id="grandTotal">
+
+Total : ₹0
+
+</div>
+
+<button class="place-btn"
+onclick="placeOrder()">
+
+Place Order
+
+</button>
+
+</div>
+
+<script>
+
+/* ================= LOAD ORDER ================= */
+
+let order =
+JSON.parse(
+localStorage.getItem("checkoutCart")
+) || [];
+
+const orderList =
+document.getElementById("orderList");
+
+const grandTotal =
+document.getElementById("grandTotal");
+
+let total = 0;
+
+/* ================= EMPTY ================= */
+
+if(order.length === 0){
+
+  orderList.innerHTML = `
+
+  <div class="empty">
+
+    <h2>
+    🛒 No Order Found
+    </h2>
+
+    <p>
+    Please order coffee first
+    </p>
+
+  </div>
+
+  `;
+}
+
+/* ================= SHOW ITEMS ================= */
+
+else{
+
+  order.forEach((item)=>{
+
+    let itemTotal =
+    item.price * item.quantity;
+
+    total += itemTotal;
+
+    orderList.innerHTML += `
+
+    <div class="order-item">
+
+      <div class="order-left">
+
+        <img src="${item.image}"
+        class="order-img">
+
+        <div class="order-info">
+
+          <h3>
+          ${item.name}
+          </h3>
+
+          <p>
+          Quantity :
+          ${item.quantity}
+          </p>
+
+          <p>
+          Price :
+          ₹${item.price}
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="order-price">
+
+        ₹${itemTotal}
+
+      </div>
+
+    </div>
+
+    `;
+
+  });
+
+}
+
+/* ================= TOTAL ================= */
+
+grandTotal.innerHTML =
+`Total : ₹${total}`;
+
+/* ================= PLACE ORDER ================= */
+
+function placeOrder(){
+
+  /* CONFETTI */
+
+  for(let i = 0; i < 120; i++){
+
+    let confetti =
+    document.createElement("div");
+
+    confetti.classList.add("confetti");
+
+    confetti.style.left =
+    Math.random() * 100 + "vw";
+
+    confetti.style.animationDuration =
+    (Math.random() * 3 + 2) + "s";
+
+    confetti.style.background =
+    `hsl(${Math.random()*360},100%,50%)`;
+
+    document.body.appendChild(confetti);
+
+    setTimeout(()=>{
+
+      confetti.remove();
+
+    },5000);
+
+  }
+
+  /* SUCCESS MESSAGE */
+
+  const success =
+  document.createElement("div");
+
+  success.innerHTML =
+  "🎉 Order Placed Successfully ☕";
+
+  success.classList.add("success-message");
+
+  document.body.appendChild(success);
+
+  /* REMOVE STORAGE */
+
+  localStorage.removeItem("cart");
+
+  localStorage.removeItem("checkoutCart");
+
+  /* REDIRECT */
+
+  setTimeout(()=>{
+
+    window.location.href =
+    "index.html";
+
+  },4000);
+
+}
+
+</script>
+
+</body>
+</html>

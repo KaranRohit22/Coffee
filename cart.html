@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Cart Page</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  background:
+  linear-gradient(rgba(20,10,5,0.75),
+  rgba(20,10,5,0.75)),
+
+  url("back.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+
+  color:white;
+
+  padding:30px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+  width:100%;
+
+  padding:20px 8%;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  z-index:1000;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+
+  font-size:30px;
+
+  font-weight:700;
+
+  color:#ffd59e;
+}
+
+/* ================= NAV LINKS ================= */
+
+.nav-links{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:30px;
+
+  list-style:none;
+}
+
+.nav-links a{
+
+  text-decoration:none;
+
+  color:white;
+
+  font-size:17px;
+
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+
+  color:#ffb347;
+}
+
+/* ================= TOGGLE ================= */
+
+.menu-toggle{
+
+  width:28px;
+
+  height:20px;
+
+  display:none;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  cursor:pointer;
+
+  z-index:2000;
+}
+
+.menu-toggle span{
+
+  width:100%;
+
+  height:3px;
+
+  background:white;
+
+  border-radius:10px;
+
+  transition:0.4s;
+}
+
+.menu-toggle.active span:nth-child(1){
+
+  transform:rotate(45deg)
+  translate(6px,6px);
+}
+
+.menu-toggle.active span:nth-child(2){
+
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+
+  transform:rotate(-45deg)
+  translate(6px,-6px);
+}
+
+/* ================= TITLE ================= */
+
+h1{
+
+  text-align:center;
+
+  margin-top:110px;
+
+  margin-bottom:30px;
+
+  color:#ffcc80;
+
+  font-size:40px;
+}
+
+/* ================= CART CONTAINER ================= */
+
+.cart-container{
+
+  width:100%;
+
+  max-width:900px;
+
+  margin:auto;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:25px;
+
+  border-radius:22px;
+
+  backdrop-filter:blur(10px);
+}
+
+/* ================= CART ITEM ================= */
+
+.cart-item{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:18px;
+
+  margin-bottom:18px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,0.08);
+
+  transition:0.4s;
+}
+
+.cart-item:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:0 0 20px
+  rgba(255,255,255,0.1);
+}
+
+.cart-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+}
+
+.cart-img{
+
+  width:90px;
+
+  height:90px;
+
+  object-fit:cover;
+
+  border-radius:14px;
+}
+
+.cart-item h3{
+
+  font-size:22px;
+
+  margin-bottom:6px;
+}
+
+.cart-item p{
+
+  color:#ddd;
+}
+
+.price{
+
+  color:#ffcc80;
+
+  font-size:20px;
+
+  font-weight:bold;
+}
+
+/* ================= QUANTITY ================= */
+
+.qty-box{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:12px;
+
+  margin-top:12px;
+}
+
+.qty-btn{
+
+  width:35px;
+
+  height:35px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:#ffb347;
+
+  color:white;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.qty-btn:hover{
+
+  transform:scale(1.1);
+}
+
+/* ================= REMOVE ================= */
+
+.remove-btn{
+
+  margin-top:12px;
+
+  padding:8px 15px;
+
+  border:none;
+
+  border-radius:10px;
+
+  background:#ff5e62;
+
+  color:white;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.remove-btn:hover{
+
+  transform:scale(1.05);
+}
+
+/* ================= EMPTY CART ================= */
+
+.empty-cart{
+
+  text-align:center;
+
+  padding:50px 20px;
+}
+
+.empty-cart h2{
+
+  font-size:32px;
+
+  margin-bottom:10px;
+}
+
+.empty-cart p{
+
+  color:#ddd;
+}
+
+.shop-btn{
+
+  display:inline-block;
+
+  margin-top:25px;
+
+  padding:12px 28px;
+
+  border-radius:12px;
+
+  text-decoration:none;
+
+  background:#ffb347;
+
+  color:white;
+
+  transition:0.3s;
+}
+
+.shop-btn:hover{
+
+  transform:translateY(-3px);
+}
+
+/* ================= TOTAL ================= */
+
+.total{
+
+  margin-top:25px;
+
+  font-size:28px;
+
+  text-align:right;
+
+  color:#ffb347;
+
+  font-weight:bold;
+}
+
+/* ================= OPTION ================= */
+
+.option-box{
+
+  margin-top:30px;
+
+  display:flex;
+
+  gap:25px;
+
+  font-size:18px;
+}
+
+.option-box input{
+
+  margin-right:8px;
+}
+
+/* ================= BUTTON ================= */
+
+.checkout-btn{
+
+  width:100%;
+
+  margin-top:30px;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:linear-gradient(
+  135deg,
+  #ffb347,
+  #ff5e62
+  );
+
+  color:white;
+
+  font-size:19px;
+
+  cursor:pointer;
+
+  transition:0.4s;
+}
+
+.checkout-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 0 18px
+  rgba(255,179,71,0.5);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+  text-align:center;
+
+  margin-top:40px;
+
+  color:#ddd;
+
+  font-size:15px;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+
+  width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:#ffb347;
+
+  border-radius:10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  body{
+    padding:15px;
+  }
+
+  .menu-toggle{
+    display:flex;
+  }
+
+  .nav-links{
+
+    position:absolute;
+
+    top:80px;
+    right:-100%;
+
+    width:220px;
+
+    flex-direction:column;
+
+    background:rgba(0,0,0,0.9);
+
+    padding:25px;
+
+    border-radius:18px;
+
+    transition:0.4s;
+  }
+
+  .nav-links.active{
+
+    right:20px;
+  }
+
+  h1{
+
+    font-size:32px;
+  }
+
+  .cart-item{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:20px;
+  }
+
+  .cart-left{
+
+    flex-direction:column;
+  }
+
+  .option-box{
+
+    flex-direction:column;
+  }
+
+  .total{
+
+    text-align:center;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+☕ Fresh Coffee
+</div>
+
+<!-- TOGGLE -->
+
+<div class="menu-toggle"
+id="menuToggle">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<!-- NAV LINKS -->
+
+<ul class="nav-links"
+id="navLinks">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="menu.html">Menu</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+<li><a href="review.html">Review</a></li>
+
+<li>
+<a href="cart.html">
+Cart (<span id="cartCount">0</span>)
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<h1>
+🛒 Your Cart
+</h1>
+
+<div class="cart-container">
+
+<!-- CART ITEMS -->
+
+<div id="cartItems"></div>
+
+<!-- TOTAL -->
+
+<div class="total"
+id="totalPrice">
+
+Total: ₹0
+
+</div>
+
+<!-- DINING / DELIVERY -->
+
+<div class="option-box">
+
+<label>
+
+<input type="radio"
+name="type"
+value="Dining"
+checked>
+
+Dining
+
+</label>
+
+<label>
+
+<input type="radio"
+name="type"
+value="Delivery">
+
+Delivery (+ ₹50)
+
+</label>
+
+</div>
+
+<!-- BUTTON -->
+
+<button 
+class="checkout-btn"
+id="checkoutBtn">
+
+Proceed to Checkout
+
+</button>
+
+</a>
+
+</div>
+
+<footer>
+
+© 2026 Fresh Coffee |
+All Rights Reserved
+
+</footer>
+
+<script>
+
+/* ================= MOBILE NAVBAR ================= */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.onclick = ()=>{
+
+  menuToggle.classList.toggle("active");
+
+  navLinks.classList.toggle("active");
+};
+
+/* ================= LOAD CART ================= */
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartItems =
+document.getElementById("cartItems");
+
+const totalPrice =
+document.getElementById("totalPrice");
+
+const cartCount =
+document.getElementById("cartCount");
+
+/* ================= UPDATE CART ================= */
+
+function updateCart(){
+
+  cartItems.innerHTML = "";
+
+  let grandTotal = 0;
+
+  cartCount.innerText = cart.length;
+
+  /* EMPTY CART */
+
+  if(cart.length === 0){
+
+    cartItems.innerHTML = `
+
+    <div class="empty-cart">
+
+      <h2>🛒 Your cart is empty</h2>
+
+      <p>Add coffee from menu page</p>
+
+      <a href="menu.html"
+      class="shop-btn">
+
+      Order Now
+
+      </a>
+
+    </div>
+
+    `;
+
+    totalPrice.innerHTML =
+    `Total: ₹0`;
+
+    return;
+  }
+
+  /* SHOW ITEMS */
+
+  cart.forEach((item,index)=>{
+
+    let itemTotal =
+    item.price * item.quantity;
+
+    grandTotal += itemTotal;
+
+    cartItems.innerHTML += `
+
+    <div class="cart-item">
+
+      <div class="cart-left">
+
+        <img src="${item.image}"
+class="cart-img">
+
+        <div>
+
+          <h3>${item.name}</h3>
+
+          <p>
+          Price : ₹${item.price}
+          </p>
+
+          <div class="qty-box">
+
+            <button class="qty-btn"
+            onclick="decreaseQty(${index})">
+
+            -
+
+            </button>
+
+            <span>
+            ${item.quantity}
+            </span>
+
+            <button class="qty-btn"
+            onclick="increaseQty(${index})">
+
+            +
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="price">
+
+          ₹${itemTotal}
+
+        </div>
+
+        <button class="remove-btn"
+        onclick="removeItem(${index})">
+
+        Remove
+
+        </button>
+
+      </div>
+
+    </div>
+
+    `;
+  });
+
+  /* DELIVERY */
+
+  const selectedType =
+  document.querySelector(
+  'input[name="type"]:checked'
+  ).value;
+
+  if(selectedType === "Delivery"){
+
+    grandTotal += 50;
+  }
+
+  totalPrice.innerHTML =
+  `Total : ₹${grandTotal}`;
+}
+
+/* ================= REMOVE ================= */
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  localStorage.setItem(
+  "cart",
+  JSON.stringify(cart)
+  );
+
+  updateCart();
+}
+
+/* ================= INCREASE ================= */
+
+function increaseQty(index){
+
+  cart[index].quantity++;
+
+  localStorage.setItem(
+  "cart",
+  JSON.stringify(cart)
+  );
+
+  updateCart();
+}
+
+/* ================= DECREASE ================= */
+
+function decreaseQty(index){
+
+  if(cart[index].quantity > 1){
+
+    cart[index].quantity--;
+
+  }
+  else{
+
+    cart.splice(index,1);
+  }
+
+  localStorage.setItem(
+  "cart",
+  JSON.stringify(cart)
+  );
+
+  updateCart();
+}
+
+/* ================= DELIVERY OPTION ================= */
+
+document.querySelectorAll(
+'input[name="type"]'
+).forEach((radio)=>{
+
+  radio.addEventListener(
+  "change",
+  updateCart
+  );
+
+});
+
+/* ================= CHECKOUT ================= */
+
+document.getElementById("checkoutBtn")
+.onclick = ()=>{
+
+  if(cart.length === 0){
+
+    alert(
+    "Your cart is empty ☕"
+    );
+
+  }
+  else{
+
+    alert(
+    "Order Placed Successfully ☕"
+    );
+
+    localStorage.removeItem("cart");
+
+    location.reload();
+  }
+
+};
+
+/* ================= CHECKOUT ================= */
+
+document.getElementById("checkoutBtn")
+.onclick = ()=>{
+
+  if(cart.length === 0){
+
+    alert("Your cart is empty ☕");
+
+  }
+  else{
+
+    /* SAVE ORDER DATA */
+
+    localStorage.setItem(
+      "checkoutCart",
+      JSON.stringify(cart)
+    );
+
+    /* REDIRECT */
+
+    window.location.href =
+    "checkout.html";
+
+  }
+
+};
+const order =
+JSON.parse(
+localStorage.getItem("checkoutCart")
+) || [];
+
+console.log(order);
+localStorage.setItem(
+"checkoutCart",
+JSON.stringify(cart)
+);
+
+/* ================= START ================= */
+
+updateCart();
+
+</script>
+
+</body>
+</html>
