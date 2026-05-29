@@ -27,17 +27,26 @@ body{
 
   min-height:100vh;
 
-  position:relative;
+  display:flex;
 
-  padding:30px 15px;
+  flex-direction:column;
+
+  justify-content:space-between;
 
   background:
-  linear-gradient(rgba(20,10,5,0.75),rgba(20,10,5,0.75)),
-  url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop');
+  linear-gradient(rgba(20,10,5,0.75),
+  rgba(20,10,5,0.75)),
+  url("back.jpg");
 
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
+
+  color:white;
+
+  padding:30px;
+
+  overflow-x:hidden;
 }
 
 /* ================= NAVBAR ================= */
@@ -496,6 +505,14 @@ margin-left: 80px;
 
 }
 
+.footer{
+      width:100%;
+      text-align:center;
+      padding:25px;
+      color:rgba(255,255,255,0.7);
+      margin-bottom: 0;
+    }
+
 /* ================= SMALL MOBILE ================= */
 
 @media(max-width:480px){
@@ -643,5 +660,11 @@ menuToggle.addEventListener("click",()=>{
 
 </script>
 
+
+<footer class="footer">
+
+    © 2026 Fresh Coffee | All Rights Reserved
+
+  </footer>
 </body>
 </html>

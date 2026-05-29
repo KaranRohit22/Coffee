@@ -24,6 +24,12 @@ html{
 
 body{
 
+  min-height:100vh;
+
+  display:flex;
+
+  flex-direction:column;
+
   background:
   linear-gradient(rgba(20,10,5,0.75),
   rgba(20,10,5,0.75)),
@@ -189,6 +195,8 @@ h1{
   backdrop-filter:blur(12px);
 
   border:1px solid rgba(255,255,255,0.1);
+
+  flex:1;
 }
 
 /* ================= CART ITEM ================= */
@@ -564,17 +572,6 @@ h1{
   transform:translateY(-3px);
 }
 
-/* ================= FOOTER ================= */
-
-footer{
-
-  text-align:center;
-
-  margin-top:40px;
-
-  color:#ddd;
-}
-
 /* ================= CELEBRATION ================= */
 
 .celebration{
@@ -693,6 +690,20 @@ footer{
   }
 }
 
+/* ================= FOOTER ================= */
+
+.footer{
+
+  width:100%;
+
+  text-align:center;
+
+  padding:25px;
+
+  margin-top:auto;
+
+  color:rgba(255,255,255,0.7);
+}
 /* ================= MOBILE ================= */
 
 @media(max-width:768px){
@@ -925,14 +936,6 @@ onclick="clearHistory()">
 <div id="historyContainer"></div>
 
 </div>
-
-<footer>
-
-© 2026 Fresh Coffee |
-All Rights Reserved
-
-</footer>
-
 <!-- ================= CELEBRATION ================= -->
 
 <div class="celebration" id="celebration">
@@ -961,7 +964,7 @@ All Rights Reserved
   </div>
 
 </div>
-
+</div>
 <script>
 
 /* ================= MOBILE MENU ================= */
@@ -1189,7 +1192,6 @@ document.querySelectorAll(
 
 });
 
-/* ================= CHECKOUT ================= */
 
 /* ================= CHECKOUT ================= */
 
@@ -1441,6 +1443,13 @@ updateCart();
 showHistory();
 
 </script>
+
+<footer class="footer">
+
+© 2026 Fresh Coffee |
+All Rights Reserved
+
+</footer>
 
 </body>
 </html>
