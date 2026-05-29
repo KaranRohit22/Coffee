@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Debit Card Payment</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+
+  min-height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  background:
+  linear-gradient(rgba(20,10,5,0.8),
+  rgba(20,10,5,0.8)),
+  url("back.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  color:white;
+
+  padding:20px;
+}
+
+/* ================= PAYMENT BOX ================= */
+
+.payment-box{
+
+  width:100%;
+
+  max-width:420px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  padding:30px;
+
+  border-radius:22px;
+
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.payment-box h2{
+
+  text-align:center;
+
+  margin-bottom:25px;
+
+  color:#ffcc80;
+}
+
+/* ================= INPUT ================= */
+
+.input-box{
+
+  margin-bottom:18px;
+}
+
+.input-box input{
+
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  outline:none;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,0.12);
+
+  color:white;
+
+  font-size:16px;
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  transition:0.3s;
+}
+
+.input-box input:focus{
+
+  border-color:#ffb347;
+
+  box-shadow:
+  0 0 18px rgba(255,179,71,0.5);
+}
+
+.input-box input::placeholder{
+  color:#ddd;
+}
+
+/* ================= BUTTON ================= */
+
+.pay-btn{
+
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(135deg,
+  #ffb347,
+  #ff5e62);
+
+  color:white;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.pay-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 0 20px rgba(255,179,71,0.6);
+}
+
+/* ================= SUCCESS POPUP ================= */
+
+.success{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100vh;
+
+  background:rgba(0,0,0,0.8);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  flex-direction:column;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:0.5s;
+
+  z-index:9999;
+}
+
+.success.show{
+
+  opacity:1;
+
+  visibility:visible;
+}
+
+.success-box{
+
+  background:rgba(255,255,255,0.1);
+
+  padding:35px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+  backdrop-filter:blur(15px);
+
+  animation:popup 0.5s ease;
+}
+
+.success-box h2{
+
+  color:#ffcc80;
+
+  margin-bottom:10px;
+}
+
+.party{
+
+  margin-top:20px;
+
+  font-size:45px;
+
+  animation:bounce 1s infinite;
+}
+
+/* ================= ERROR POPUP ================= */
+
+.error-popup{
+
+  position:fixed;
+
+  top:20px;
+  right:20px;
+
+  background:#ff4d4d;
+
+  color:white;
+
+  padding:15px 20px;
+
+  border-radius:12px;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:0.4s;
+
+  z-index:9999;
+
+  font-size:16px;
+}
+
+.error-popup.show{
+
+  opacity:1;
+
+  visibility:visible;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes bounce{
+
+  0%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-20px);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
+}
+
+@keyframes popup{
+
+  0%{
+    transform:scale(0.5);
+    opacity:0;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:500px){
+
+  .payment-box{
+
+    padding:22px;
+  }
+
+  .success-box{
+
+    width:90%;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-box">
+
+<h2>
+💳 Debit Card Payment
+</h2>
+
+<div class="input-box">
+
+<input type="text"
+id="cardNumber"
+maxlength="16"
+placeholder="Enter 16 Digit Card Number">
+
+</div>
+
+<div class="input-box">
+
+<input type="password"
+id="cvv"
+maxlength="3"
+placeholder="Enter 3 Digit CVV">
+
+</div>
+
+<div class="input-box">
+
+<input type="text"
+id="name"
+placeholder="Card Holder Name">
+
+</div>
+
+<button class="pay-btn"
+onclick="verifyPayment()">
+
+Pay Now
+
+</button>
+
+</div>
+
+<!-- ================= SUCCESS ================= -->
+
+<div class="success"
+id="success">
+
+<div class="success-box">
+
+<h2>
+🎉 Payment Successful
+</h2>
+
+<p>
+Your coffee order is confirmed ☕
+</p>
+
+<div class="party">
+🎊 🎉 ✨
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= ERROR POPUP ================= -->
+
+<div class="error-popup"
+id="errorPopup">
+
+❌ Invalid Payment Details
+
+</div>
+
+<script>
+
+/* ================= ERROR POPUP ================= */
+
+function showError(message){
+
+const popup =
+document.getElementById(
+"errorPopup"
+);
+
+popup.innerText = message;
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+
+popup.classList.remove("show");
+
+},2500);
+
+}
+
+/* ================= VERIFY PAYMENT ================= */
+
+function verifyPayment(){
+
+  const card =
+  document.getElementById(
+  "cardNumber"
+  ).value.trim();
+
+  const cvv =
+  document.getElementById(
+  "cvv"
+  ).value.trim();
+
+  const name =
+  document.getElementById(
+  "name"
+  ).value.trim();
+
+  /* ================= VALIDATION ================= */
+
+  if(
+  card === "" ||
+  cvv === "" ||
+  name === ""
+  ){
+
+    showError(
+    "Please fill all details"
+    );
+
+    return;
+  }
+
+  /* CARD NUMBER CHECK */
+
+  if(
+  card.length !== 16 ||
+  isNaN(card)
+  ){
+
+    showError(
+    "Card number must be 16 digits"
+    );
+
+    return;
+  }
+
+  /* CVV CHECK */
+
+  if(
+  cvv.length !== 3 ||
+  isNaN(cvv)
+  ){
+
+    showError(
+    "CVV must be 3 digits"
+    );
+
+    return;
+  }
+
+  /* NAME CHECK */
+
+  if(name.length < 3){
+
+    showError(
+    "Enter valid card holder name"
+    );
+
+    return;
+  }
+
+  /* ================= SAVE ORDER ================= */
+
+  let order =
+  JSON.parse(
+  localStorage.getItem(
+  "currentOrder"
+  ));
+
+  let orderHistory =
+  JSON.parse(
+  localStorage.getItem(
+  "orderHistory"
+  )) || [];
+
+  orderHistory.unshift(order);
+
+  localStorage.setItem(
+  "orderHistory",
+  JSON.stringify(orderHistory)
+  );
+
+  localStorage.removeItem("cart");
+
+  /* ================= SHOW SUCCESS ================= */
+
+  document.getElementById(
+  "success"
+  ).classList.add("show");
+
+  /* ================= REDIRECT ================= */
+
+  setTimeout(()=>{
+
+    window.location.href =
+    "cart.html";
+
+  },3000);
+
+}
+
+</script>
+
+</body>
+</html>

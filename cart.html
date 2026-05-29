@@ -7,7 +7,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Cart Page</title>
+<title>Fresh Coffee Cart</title>
 
 <style>
 
@@ -27,7 +27,6 @@ body{
   background:
   linear-gradient(rgba(20,10,5,0.75),
   rgba(20,10,5,0.75)),
-
   url("back.jpg");
 
   background-size:cover;
@@ -37,6 +36,8 @@ body{
   color:white;
 
   padding:30px;
+
+  overflow-x:hidden;
 }
 
 /* ================= NAVBAR ================= */
@@ -45,7 +46,9 @@ body{
 
   width:100%;
 
-  padding:20px 8%;
+  height:80px;
+
+  padding:0 8%;
 
   display:flex;
 
@@ -69,7 +72,7 @@ body{
 
 .logo{
 
-  font-size:30px;
+  font-size:28px;
 
   font-weight:700;
 
@@ -109,9 +112,9 @@ body{
 
 .menu-toggle{
 
-  width:28px;
+  width:30px;
 
-  height:20px;
+  height:22px;
 
   display:none;
 
@@ -120,8 +123,6 @@ body{
   justify-content:space-between;
 
   cursor:pointer;
-
-  z-index:2000;
 }
 
 .menu-toggle span{
@@ -151,7 +152,7 @@ body{
 .menu-toggle.active span:nth-child(3){
 
   transform:rotate(-45deg)
-  translate(6px,-6px);
+  translate(7px,-7px);
 }
 
 /* ================= TITLE ================= */
@@ -166,7 +167,7 @@ h1{
 
   color:#ffcc80;
 
-  font-size:40px;
+  font-size:42px;
 }
 
 /* ================= CART CONTAINER ================= */
@@ -175,7 +176,7 @@ h1{
 
   width:100%;
 
-  max-width:900px;
+  max-width:950px;
 
   margin:auto;
 
@@ -185,7 +186,9 @@ h1{
 
   border-radius:22px;
 
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.1);
 }
 
 /* ================= CART ITEM ================= */
@@ -198,11 +201,11 @@ h1{
 
   align-items:center;
 
-  padding:18px;
+  padding:20px;
 
-  margin-bottom:18px;
+  margin-bottom:20px;
 
-  border-radius:16px;
+  border-radius:18px;
 
   background:rgba(255,255,255,0.08);
 
@@ -211,10 +214,10 @@ h1{
 
 .cart-item:hover{
 
-  transform:translateY(-4px);
+  transform:translateY(-5px);
 
-  box-shadow:0 0 20px
-  rgba(255,255,255,0.1);
+  box-shadow:
+  0 0 25px rgba(255,179,71,0.25);
 }
 
 .cart-left{
@@ -228,20 +231,20 @@ h1{
 
 .cart-img{
 
-  width:90px;
+  width:100px;
 
-  height:90px;
+  height:100px;
 
   object-fit:cover;
 
-  border-radius:14px;
+  border-radius:15px;
 }
 
 .cart-item h3{
 
   font-size:22px;
 
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 
 .cart-item p{
@@ -253,7 +256,7 @@ h1{
 
   color:#ffcc80;
 
-  font-size:20px;
+  font-size:22px;
 
   font-weight:bold;
 }
@@ -266,11 +269,9 @@ h1{
 
   align-items:center;
 
-  justify-content:center;
-
   gap:12px;
 
-  margin-top:12px;
+  margin-top:15px;
 }
 
 .qty-btn{
@@ -297,19 +298,31 @@ h1{
 .qty-btn:hover{
 
   transform:scale(1.1);
+
+  box-shadow:
+  0 0 15px rgba(255,179,71,0.6);
 }
 
-/* ================= REMOVE ================= */
+.qty-number{
+
+  font-size:18px;
+
+  min-width:20px;
+
+  text-align:center;
+}
+
+/* ================= REMOVE BUTTON ================= */
 
 .remove-btn{
 
   margin-top:12px;
 
-  padding:8px 15px;
+  padding:10px 16px;
 
   border:none;
 
-  border-radius:10px;
+  border-radius:12px;
 
   background:#ff5e62;
 
@@ -323,6 +336,192 @@ h1{
 .remove-btn:hover{
 
   transform:scale(1.05);
+
+  box-shadow:
+  0 0 15px rgba(255,94,98,0.6);
+}
+
+/* ================= TOTAL ================= */
+
+.total{
+
+  margin-top:30px;
+
+  text-align:right;
+
+  font-size:30px;
+
+  color:#ffcc80;
+
+  font-weight:bold;
+}
+
+/* ================= OPTION ================= */
+
+.option-box{
+
+  margin-top:25px;
+
+  display:flex;
+
+  gap:30px;
+
+  font-size:18px;
+}
+
+.option-box label{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+/* ================= PAYMENT ================= */
+
+.payment-box{
+
+  margin-top:30px;
+}
+
+.payment-box h3{
+
+  margin-bottom:15px;
+
+  color:#ffcc80;
+}
+
+.payment-select{
+
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:14px;
+
+  outline:none;
+
+  background:rgba(255,255,255,0.1);
+
+  color:white;
+
+  font-size:16px;
+
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.payment-select option{
+  color:black;
+}
+
+/* ================= CHECKOUT BUTTON ================= */
+
+.checkout-btn{
+
+  width:100%;
+
+  margin-top:30px;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+  linear-gradient(135deg,
+  #ffb347,
+  #ff5e62);
+
+  color:white;
+
+  font-size:19px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.4s;
+}
+
+.checkout-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 0 25px rgba(255,179,71,0.6);
+}
+
+/* ================= ORDER HISTORY ================= */
+
+.history{
+
+  margin-top:40px;
+}
+
+.history h2{
+
+  margin-bottom:20px;
+
+  color:#ffcc80;
+}
+
+/* ================= CLEAR HISTORY BUTTON ================= */
+
+.clear-history-btn{
+
+  margin-bottom:20px;
+
+  padding:12px 22px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(135deg,
+  #ff5e62,
+  #ff9966);
+
+  color:white;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.clear-history-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 0 20px rgba(255,94,98,0.6);
+}
+.history-card{
+
+  background:rgba(255,255,255,0.08);
+
+  padding:18px;
+
+  border-radius:18px;
+
+  margin-bottom:15px;
+
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.history-card p{
+
+  margin-bottom:8px;
+
+  color:#ddd;
 }
 
 /* ================= EMPTY CART ================= */
@@ -336,23 +535,18 @@ h1{
 
 .empty-cart h2{
 
-  font-size:32px;
+  font-size:34px;
 
-  margin-bottom:10px;
-}
-
-.empty-cart p{
-
-  color:#ddd;
+  margin-bottom:12px;
 }
 
 .shop-btn{
 
   display:inline-block;
 
-  margin-top:25px;
+  margin-top:20px;
 
-  padding:12px 28px;
+  padding:12px 25px;
 
   border-radius:12px;
 
@@ -370,77 +564,6 @@ h1{
   transform:translateY(-3px);
 }
 
-/* ================= TOTAL ================= */
-
-.total{
-
-  margin-top:25px;
-
-  font-size:28px;
-
-  text-align:right;
-
-  color:#ffb347;
-
-  font-weight:bold;
-}
-
-/* ================= OPTION ================= */
-
-.option-box{
-
-  margin-top:30px;
-
-  display:flex;
-
-  gap:25px;
-
-  font-size:18px;
-}
-
-.option-box input{
-
-  margin-right:8px;
-}
-
-/* ================= BUTTON ================= */
-
-.checkout-btn{
-
-  width:100%;
-
-  margin-top:30px;
-
-  padding:16px;
-
-  border:none;
-
-  border-radius:14px;
-
-  background:linear-gradient(
-  135deg,
-  #ffb347,
-  #ff5e62
-  );
-
-  color:white;
-
-  font-size:19px;
-
-  cursor:pointer;
-
-  transition:0.4s;
-}
-
-.checkout-btn:hover{
-
-  transform:translateY(-3px);
-
-  box-shadow:
-  0 0 18px
-  rgba(255,179,71,0.5);
-}
-
 /* ================= FOOTER ================= */
 
 footer{
@@ -450,22 +573,124 @@ footer{
   margin-top:40px;
 
   color:#ddd;
-
-  font-size:15px;
 }
 
-/* ================= SCROLLBAR ================= */
+/* ================= CELEBRATION ================= */
 
-::-webkit-scrollbar{
+.celebration{
 
-  width:10px;
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100vh;
+
+  background:rgba(0,0,0,0.75);
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  z-index:99999;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:0.5s;
 }
 
-::-webkit-scrollbar-thumb{
+.celebration.show{
 
-  background:#ffb347;
+  opacity:1;
 
-  border-radius:10px;
+  visibility:visible;
+}
+
+.success-box{
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  padding:35px 45px;
+
+  border-radius:25px;
+
+  text-align:center;
+
+  animation:popUp 0.7s ease;
+}
+
+.success-box h2{
+
+  font-size:38px;
+
+  color:#ffcc80;
+
+  margin-bottom:12px;
+}
+
+.success-box p{
+
+  font-size:18px;
+}
+
+.poppers{
+
+  margin-top:40px;
+
+  display:flex;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+}
+
+.poppers span{
+
+  font-size:55px;
+
+  animation:party 2s infinite ease-in-out;
+}
+
+@keyframes party{
+
+  0%{
+    transform:translateY(0px)
+    rotate(0deg);
+  }
+
+  50%{
+    transform:translateY(-30px)
+    rotate(20deg);
+  }
+
+  100%{
+    transform:translateY(0px)
+    rotate(0deg);
+  }
+}
+
+@keyframes popUp{
+
+  0%{
+    transform:scale(0.5);
+    opacity:0;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
 }
 
 /* ================= MOBILE ================= */
@@ -474,6 +699,17 @@ footer{
 
   body{
     padding:15px;
+  }
+
+  .navbar{
+
+    height:70px;
+
+    padding:0 20px;
+  }
+
+  .logo{
+    font-size:22px;
   }
 
   .menu-toggle{
@@ -491,7 +727,7 @@ footer{
 
     flex-direction:column;
 
-    background:rgba(0,0,0,0.9);
+    background:rgba(0,0,0,0.92);
 
     padding:25px;
 
@@ -501,12 +737,10 @@ footer{
   }
 
   .nav-links.active{
-
     right:20px;
   }
 
   h1{
-
     font-size:32px;
   }
 
@@ -520,18 +754,31 @@ footer{
   }
 
   .cart-left{
-
     flex-direction:column;
   }
 
   .option-box{
-
     flex-direction:column;
   }
 
   .total{
-
     text-align:center;
+    font-size:25px;
+  }
+
+  .success-box{
+
+    width:90%;
+
+    padding:25px;
+  }
+
+  .success-box h2{
+    font-size:28px;
+  }
+
+  .poppers span{
+    font-size:40px;
   }
 
 }
@@ -550,8 +797,6 @@ footer{
 ☕ Fresh Coffee
 </div>
 
-<!-- TOGGLE -->
-
 <div class="menu-toggle"
 id="menuToggle">
 
@@ -560,8 +805,6 @@ id="menuToggle">
 <span></span>
 
 </div>
-
-<!-- NAV LINKS -->
 
 <ul class="nav-links"
 id="navLinks">
@@ -594,20 +837,14 @@ Cart (<span id="cartCount">0</span>)
 
 <div class="cart-container">
 
-<!-- CART ITEMS -->
-
 <div id="cartItems"></div>
-
-<!-- TOTAL -->
 
 <div class="total"
 id="totalPrice">
 
-Total: ₹0
+Total : ₹0
 
 </div>
-
-<!-- DINING / DELIVERY -->
 
 <div class="option-box">
 
@@ -634,9 +871,36 @@ Delivery (+ ₹50)
 
 </div>
 
-<!-- BUTTON -->
+<div class="payment-box">
 
-<button 
+<h3>
+💳 Select Payment Method
+</h3>
+
+<select class="payment-select"
+id="paymentMethod">
+
+<option value="Cash On Delivery">
+Cash On Delivery
+</option>
+
+<option value="UPI">
+UPI
+</option>
+
+<option value="Credit Card">
+Credit Card
+</option>
+
+<option value="Debit Card">
+Debit Card
+</option>
+
+</select>
+
+</div>
+
+<button
 class="checkout-btn"
 id="checkoutBtn">
 
@@ -644,7 +908,21 @@ Proceed to Checkout
 
 </button>
 
-</a>
+<div class="history">
+
+<h2>
+📜 Order History
+</h2>
+
+<button
+class="clear-history-btn"
+onclick="clearHistory()">
+
+🗑 Clear History
+
+</button>
+
+<div id="historyContainer"></div>
 
 </div>
 
@@ -655,9 +933,38 @@ All Rights Reserved
 
 </footer>
 
+<!-- ================= CELEBRATION ================= -->
+
+<div class="celebration" id="celebration">
+
+  <div class="success-box">
+
+    <h2>
+      🎉 Order Placed Successfully!
+    </h2>
+
+    <p>
+      Your coffee is being prepared ☕
+    </p>
+
+  </div>
+
+  <div class="poppers">
+
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>✨</span>
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>✨</span>
+
+  </div>
+
+</div>
+
 <script>
 
-/* ================= MOBILE NAVBAR ================= */
+/* ================= MOBILE MENU ================= */
 
 const menuToggle =
 document.getElementById("menuToggle");
@@ -672,10 +979,13 @@ menuToggle.onclick = ()=>{
   navLinks.classList.toggle("active");
 };
 
-/* ================= LOAD CART ================= */
+/* ================= LOAD DATA ================= */
 
 let cart =
 JSON.parse(localStorage.getItem("cart")) || [];
+
+let orderHistory =
+JSON.parse(localStorage.getItem("orderHistory")) || [];
 
 const cartItems =
 document.getElementById("cartItems");
@@ -685,6 +995,9 @@ document.getElementById("totalPrice");
 
 const cartCount =
 document.getElementById("cartCount");
+
+const historyContainer =
+document.getElementById("historyContainer");
 
 /* ================= UPDATE CART ================= */
 
@@ -696,15 +1009,13 @@ function updateCart(){
 
   cartCount.innerText = cart.length;
 
-  /* EMPTY CART */
-
   if(cart.length === 0){
 
     cartItems.innerHTML = `
 
     <div class="empty-cart">
 
-      <h2>🛒 Your cart is empty</h2>
+      <h2>🛒 Cart is Empty</h2>
 
       <p>Add coffee from menu page</p>
 
@@ -720,12 +1031,10 @@ function updateCart(){
     `;
 
     totalPrice.innerHTML =
-    `Total: ₹0`;
+    "Total : ₹0";
 
     return;
   }
-
-  /* SHOW ITEMS */
 
   cart.forEach((item,index)=>{
 
@@ -741,7 +1050,7 @@ function updateCart(){
       <div class="cart-left">
 
         <img src="${item.image}"
-class="cart-img">
+        class="cart-img">
 
         <div>
 
@@ -753,18 +1062,22 @@ class="cart-img">
 
           <div class="qty-box">
 
-            <button class="qty-btn"
+            <button
+            class="qty-btn"
             onclick="decreaseQty(${index})">
 
             -
 
             </button>
 
-            <span>
+            <span class="qty-number">
+
             ${item.quantity}
+
             </span>
 
-            <button class="qty-btn"
+            <button
+            class="qty-btn"
             onclick="increaseQty(${index})">
 
             +
@@ -785,7 +1098,8 @@ class="cart-img">
 
         </div>
 
-        <button class="remove-btn"
+        <button
+        class="remove-btn"
         onclick="removeItem(${index})">
 
         Remove
@@ -798,8 +1112,6 @@ class="cart-img">
 
     `;
   });
-
-  /* DELIVERY */
 
   const selectedType =
   document.querySelector(
@@ -815,7 +1127,7 @@ class="cart-img">
   `Total : ₹${grandTotal}`;
 }
 
-/* ================= REMOVE ================= */
+/* ================= REMOVE ITEM ================= */
 
 function removeItem(index){
 
@@ -851,8 +1163,7 @@ function decreaseQty(index){
 
     cart[index].quantity--;
 
-  }
-  else{
+  }else{
 
     cart.splice(index,1);
   }
@@ -865,7 +1176,7 @@ function decreaseQty(index){
   updateCart();
 }
 
-/* ================= DELIVERY OPTION ================= */
+/* ================= DELIVERY ================= */
 
 document.querySelectorAll(
 'input[name="type"]'
@@ -880,70 +1191,254 @@ document.querySelectorAll(
 
 /* ================= CHECKOUT ================= */
 
-document.getElementById("checkoutBtn")
-.onclick = ()=>{
+/* ================= CHECKOUT ================= */
+
+document.getElementById(
+"checkoutBtn"
+).onclick = ()=>{
 
   if(cart.length === 0){
 
-    alert(
-    "Your cart is empty ☕"
-    );
-
+    return;
   }
+
+  /* ORDER TYPE */
+
+  const orderType =
+  document.querySelector(
+  'input[name="type"]:checked'
+  ).value;
+
+  /* PAYMENT METHOD */
+
+  const paymentMethod =
+  document.getElementById(
+  "paymentMethod"
+  ).value;
+
+  /* TOTAL */
+
+  let total =
+  totalPrice.innerText;
+
+  /* ORDER DATA */
+
+  const orderData = {
+
+    items:cart,
+
+    type:orderType,
+
+    payment:paymentMethod,
+
+    total:total,
+
+    date:new Date().toLocaleString()
+  };
+
+  /* SAVE CURRENT ORDER */
+
+  localStorage.setItem(
+  "currentOrder",
+  JSON.stringify(orderData)
+  );
+
+  /* ================= PAYMENT REDIRECT ================= */
+
+  if(paymentMethod === "UPI"){
+
+    window.location.href =
+    "upi.html";
+  }
+
+  else if(
+  paymentMethod === "Credit Card"
+  ){
+
+    window.location.href =
+    "creditcard.html";
+  }
+
+  else if(
+  paymentMethod === "Debit Card"
+  ){
+
+    window.location.href =
+    "debit.html";
+  }
+
   else{
 
-    alert(
-    "Order Placed Successfully ☕"
+    /* CASH ON DELIVERY */
+
+    orderHistory.unshift(orderData);
+
+    localStorage.setItem(
+    "orderHistory",
+    JSON.stringify(orderHistory)
     );
+
+    /* SHOW CELEBRATION */
+
+    document.getElementById(
+    "celebration"
+    ).classList.add("show");
+
+    /* CLEAR CART */
 
     localStorage.removeItem("cart");
 
-    location.reload();
-  }
+    cart = [];
 
-};
+    updateCart();
 
-/* ================= CHECKOUT ================= */
+    showHistory();
 
-document.getElementById("checkoutBtn")
-.onclick = ()=>{
+    /* HIDE CELEBRATION */
 
-  if(cart.length === 0){
+    setTimeout(()=>{
 
-    alert("Your cart is empty ☕");
+      document.getElementById(
+      "celebration"
+      ).classList.remove("show");
 
-  }
-  else{
-
-    /* SAVE ORDER DATA */
-
-    localStorage.setItem(
-      "checkoutCart",
-      JSON.stringify(cart)
-    );
-
-    /* REDIRECT */
-
-    window.location.href =
-    "checkout.html";
+    },3000);
 
   }
 
 };
-const order =
-JSON.parse(
-localStorage.getItem("checkoutCart")
-) || [];
+/* ================= ORDER HISTORY ================= */
 
-console.log(order);
-localStorage.setItem(
-"checkoutCart",
-JSON.stringify(cart)
-);
+function showHistory(){
 
-/* ================= START ================= */
+  historyContainer.innerHTML = "";
+
+  if(orderHistory.length === 0){
+
+    historyContainer.innerHTML =
+    "<p>No Orders Yet</p>";
+
+    return;
+  }
+
+  orderHistory.forEach((order)=>{
+
+    let itemsHTML = "";
+
+    order.items.forEach((item)=>{
+
+      itemsHTML += `
+
+      <p>
+
+      ${item.name}
+      × ${item.quantity}
+
+      </p>
+
+      `;
+    });
+
+    historyContainer.innerHTML += `
+
+    <div class="history-card">
+
+      <p>
+      📅 ${order.date}
+      </p>
+
+      <p>
+      🍽 ${order.type}
+      </p>
+
+      <p>
+      💳 ${order.payment}
+      </p>
+
+      <p>
+      💰 ${order.total}
+      </p>
+
+      ${itemsHTML}
+
+    </div>
+
+    `;
+  });
+}
+
+
+/* ================= CLEAR HISTORY ================= */
+
+function clearHistory(){
+
+  if(orderHistory.length === 0){
+
+    return;
+  }
+
+  /* CLEAR HISTORY */
+
+  localStorage.removeItem(
+  "orderHistory"
+  );
+
+  orderHistory = [];
+
+  showHistory();
+
+  /* CREATE CELEBRATION */
+
+  const celebration =
+  document.createElement("div");
+
+  celebration.className =
+  "celebration show";
+
+  celebration.innerHTML = `
+
+  <div class="success-box">
+
+    <h2>
+      🎉 History Cleared!
+    </h2>
+
+    <p>
+      All order history removed successfully ☕
+    </p>
+
+  </div>
+
+  <div class="poppers">
+
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>✨</span>
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>✨</span>
+
+  </div>
+
+  `;
+
+  document.body.appendChild(
+  celebration
+  );
+
+  /* REMOVE AFTER 3 SEC */
+
+  setTimeout(()=>{
+
+    celebration.remove();
+
+  },3000);
+
+}
 
 updateCart();
+
+showHistory();
 
 </script>
 

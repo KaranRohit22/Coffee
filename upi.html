@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>UPI Payment</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+linear-gradient(rgba(20,10,5,0.8),
+rgba(20,10,5,0.8)),
+url("back.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+color:white;
+
+padding:20px;
+}
+
+/* ================= PAYMENT BOX ================= */
+
+.payment-box{
+
+width:100%;
+
+max-width:450px;
+
+padding:35px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(12px);
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.payment-box h1{
+
+color:#ffcc80;
+
+margin-bottom:15px;
+
+font-size:34px;
+}
+
+.payment-box p{
+
+color:#ddd;
+
+margin-bottom:10px;
+}
+
+.payment-box img{
+
+width:220px;
+
+margin:20px auto;
+
+border-radius:18px;
+
+border:4px solid rgba(255,255,255,0.1);
+}
+
+/* ================= INPUT ================= */
+
+.payment-box input{
+
+width:100%;
+
+padding:15px;
+
+margin-top:20px;
+
+border:none;
+
+outline:none;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.1);
+
+color:white;
+
+font-size:16px;
+
+border:1px solid rgba(255,255,255,0.15);
+
+transition:0.4s;
+}
+
+.payment-box input::placeholder{
+
+color:#ddd;
+}
+
+.payment-box input:focus{
+
+border-color:#ffb347;
+
+box-shadow:
+0 0 20px rgba(255,179,71,0.5);
+}
+
+/* ================= BUTTON ================= */
+
+.payment-box button{
+
+width:100%;
+
+margin-top:25px;
+
+padding:15px;
+
+border:none;
+
+border-radius:14px;
+
+background:
+linear-gradient(135deg,
+#ffb347,
+#ff5e62);
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.4s;
+}
+
+.payment-box button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 0 20px rgba(255,179,71,0.6);
+}
+
+/* ================= POPUP ================= */
+
+.popup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100vh;
+
+background:rgba(0,0,0,0.7);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:0.4s;
+
+z-index:9999;
+}
+
+.popup.show{
+
+opacity:1;
+
+visibility:visible;
+}
+
+.popup-box{
+
+background:white;
+
+color:black;
+
+padding:35px;
+
+border-radius:20px;
+
+text-align:center;
+
+width:320px;
+
+animation:pop 0.4s ease;
+}
+
+.popup-box h2{
+
+margin-bottom:12px;
+
+font-size:28px;
+}
+
+.popup-box p{
+
+font-size:16px;
+}
+
+.popup-box button{
+
+margin-top:18px;
+
+padding:10px 22px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ffb347;
+
+color:white;
+
+cursor:pointer;
+
+font-size:16px;
+}
+
+@keyframes pop{
+
+0%{
+transform:scale(0.5);
+opacity:0;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:500px){
+
+.payment-box{
+
+padding:25px;
+}
+
+.payment-box h1{
+
+font-size:28px;
+}
+
+.payment-box img{
+
+width:180px;
+}
+
+.popup-box{
+
+width:90%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-box">
+
+<h1>
+📱 UPI Payment
+</h1>
+
+<p>
+Scan QR or Enter UPI ID
+</p>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=FreshCoffeeUPI">
+
+<input
+type="text"
+id="upiInput"
+placeholder="Enter UPI ID">
+
+<button onclick="verifyPayment()">
+
+Verify Payment
+
+</button>
+
+</div>
+
+<!-- ================= POPUP ================= -->
+
+<div class="popup"
+id="popup">
+
+<div class="popup-box">
+
+<h2 id="popupTitle">
+Payment Status
+</h2>
+
+<p id="popupText">
+Message
+</p>
+
+<button onclick="closePopup()">
+OK
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* ================= SHOW POPUP ================= */
+
+function showPopup(title,message){
+
+document.getElementById(
+"popupTitle"
+).innerText = title;
+
+document.getElementById(
+"popupText"
+).innerText = message;
+
+document.getElementById(
+"popup"
+).classList.add("show");
+
+}
+
+/* ================= CLOSE POPUP ================= */
+
+function closePopup(){
+
+document.getElementById(
+"popup"
+).classList.remove("show");
+
+}
+
+/* ================= VERIFY PAYMENT ================= */
+
+function verifyPayment(){
+
+const upiId =
+document.getElementById(
+"upiInput"
+).value.trim();
+
+/* ================= EMPTY CHECK ================= */
+
+if(upiId === ""){
+
+showPopup(
+"❌ Invalid UPI",
+"Please enter your UPI ID"
+);
+
+return;
+}
+
+/* ================= FORMAT CHECK ================= */
+
+if(
+!upiId.includes("@") ||
+upiId.length < 6
+){
+
+showPopup(
+"❌ Invalid UPI",
+"Enter valid UPI ID like name@upi"
+);
+
+return;
+}
+
+/* ================= ORDER SAVE ================= */
+
+let currentOrder =
+JSON.parse(
+localStorage.getItem("currentOrder")
+);
+
+let orderHistory =
+JSON.parse(
+localStorage.getItem("orderHistory")
+) || [];
+
+orderHistory.unshift(currentOrder);
+
+localStorage.setItem(
+"orderHistory",
+JSON.stringify(orderHistory)
+);
+
+/* ================= CLEAR CART ================= */
+
+localStorage.removeItem("cart");
+
+/* ================= SUCCESS POPUP ================= */
+
+showPopup(
+"✅ Payment Successful",
+"Your coffee order is confirmed ☕"
+);
+
+/* ================= REDIRECT ================= */
+
+setTimeout(()=>{
+
+window.location.href =
+"cart.html";
+
+},2500);
+
+}
+
+</script>
+
+</body>
+</html>

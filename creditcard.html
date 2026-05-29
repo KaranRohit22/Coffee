@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Credit Card Payment</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+linear-gradient(rgba(20,10,5,0.8),
+rgba(20,10,5,0.8)),
+url("back.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+color:white;
+
+padding:20px;
+}
+
+/* ================= CARD BOX ================= */
+
+.card-box{
+
+width:100%;
+
+max-width:500px;
+
+padding:35px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.card-box h1{
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:#ffcc80;
+
+font-size:34px;
+}
+
+/* ================= INPUT ================= */
+
+.card-box input{
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:18px;
+
+border:none;
+
+outline:none;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.1);
+
+color:white;
+
+font-size:16px;
+
+border:1px solid rgba(255,255,255,0.15);
+
+transition:0.4s;
+}
+
+.card-box input::placeholder{
+
+color:#ddd;
+}
+
+.card-box input:focus{
+
+border-color:#ffb347;
+
+box-shadow:
+0 0 20px rgba(255,179,71,0.5);
+}
+
+/* ================= ROW ================= */
+
+.row{
+
+display:flex;
+
+gap:15px;
+}
+
+/* ================= BUTTON ================= */
+
+.card-box button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:14px;
+
+background:
+linear-gradient(135deg,
+#ffb347,
+#ff5e62);
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.4s;
+}
+
+.card-box button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 0 20px rgba(255,179,71,0.6);
+}
+
+/* ================= POPUP ================= */
+
+.popup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100vh;
+
+background:rgba(0,0,0,0.7);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:0.4s;
+
+z-index:9999;
+}
+
+.popup.show{
+
+opacity:1;
+
+visibility:visible;
+}
+
+.popup-box{
+
+background:white;
+
+color:black;
+
+padding:35px;
+
+border-radius:20px;
+
+text-align:center;
+
+width:320px;
+
+animation:popupAnim 0.4s ease;
+}
+
+.popup-box h2{
+
+margin-bottom:12px;
+
+font-size:28px;
+}
+
+.popup-box p{
+
+font-size:16px;
+}
+
+.popup-box button{
+
+margin-top:18px;
+
+padding:10px 22px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ffb347;
+
+color:white;
+
+cursor:pointer;
+
+font-size:16px;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes popupAnim{
+
+0%{
+transform:scale(0.5);
+opacity:0;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:500px){
+
+.card-box{
+
+padding:25px;
+}
+
+.card-box h1{
+
+font-size:28px;
+}
+
+.row{
+
+flex-direction:column;
+}
+
+.popup-box{
+
+width:90%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card-box">
+
+<h1>
+💳 Credit Card
+</h1>
+
+<input
+type="text"
+id="holderName"
+placeholder="Card Holder Name">
+
+<input
+type="text"
+id="cardNumber"
+maxlength="16"
+placeholder="Card Number">
+
+<div class="row">
+
+<input
+type="text"
+id="expiry"
+maxlength="5"
+placeholder="MM/YY">
+
+<input
+type="password"
+id="cvv"
+maxlength="3"
+placeholder="CVV">
+
+</div>
+
+<button onclick="payNow()">
+
+Pay Now
+
+</button>
+
+</div>
+
+<!-- ================= POPUP ================= -->
+
+<div class="popup"
+id="popup">
+
+<div class="popup-box">
+
+<h2 id="popupTitle">
+Payment Status
+</h2>
+
+<p id="popupText">
+Message
+</p>
+
+<button onclick="closePopup()">
+OK
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* ================= SHOW POPUP ================= */
+
+function showPopup(title,message){
+
+document.getElementById(
+"popupTitle"
+).innerText = title;
+
+document.getElementById(
+"popupText"
+).innerText = message;
+
+document.getElementById(
+"popup"
+).classList.add("show");
+
+}
+
+/* ================= CLOSE POPUP ================= */
+
+function closePopup(){
+
+document.getElementById(
+"popup"
+).classList.remove("show");
+
+}
+
+/* ================= PAYMENT FUNCTION ================= */
+
+function payNow(){
+
+const holderName =
+document.getElementById(
+"holderName"
+).value.trim();
+
+const cardNumber =
+document.getElementById(
+"cardNumber"
+).value.trim();
+
+const expiry =
+document.getElementById(
+"expiry"
+).value.trim();
+
+const cvv =
+document.getElementById(
+"cvv"
+).value.trim();
+
+/* ================= VALIDATION ================= */
+
+if(
+holderName === "" ||
+cardNumber === "" ||
+expiry === "" ||
+cvv === ""
+){
+
+showPopup(
+"❌ Invalid Details",
+"Please fill all card details"
+);
+
+return;
+}
+
+/* CARD NUMBER CHECK */
+
+if(
+cardNumber.length !== 16 ||
+isNaN(cardNumber)
+){
+
+showPopup(
+"❌ Invalid Card",
+"Card number must be 16 digits"
+);
+
+return;
+}
+
+/* EXPIRY CHECK */
+
+if(
+!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)
+){
+
+showPopup(
+"❌ Invalid Expiry",
+"Use format MM/YY"
+);
+
+return;
+}
+
+/* CVV CHECK */
+
+if(
+cvv.length !== 3 ||
+isNaN(cvv)
+){
+
+showPopup(
+"❌ Invalid CVV",
+"CVV must be 3 digits"
+);
+
+return;
+}
+
+/* ================= SAVE ORDER ================= */
+
+let currentOrder =
+JSON.parse(
+localStorage.getItem("currentOrder")
+);
+
+let orderHistory =
+JSON.parse(
+localStorage.getItem("orderHistory")
+) || [];
+
+orderHistory.unshift(currentOrder);
+
+localStorage.setItem(
+"orderHistory",
+JSON.stringify(orderHistory)
+);
+
+/* ================= CLEAR CART ================= */
+
+localStorage.removeItem("cart");
+
+/* ================= SUCCESS ================= */
+
+showPopup(
+"✅ Payment Successful",
+"Your coffee order is confirmed ☕"
+);
+
+/* ================= REDIRECT ================= */
+
+setTimeout(()=>{
+
+window.location.href =
+"cart.html";
+
+},2500);
+
+}
+
+</script>
+
+</body>
+</html>
